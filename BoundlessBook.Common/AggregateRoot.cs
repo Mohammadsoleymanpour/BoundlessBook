@@ -2,7 +2,7 @@
 
 namespace BoundlessBook.Common
 {
-    public class AggregateRoot
+    public class AggregateRoot : BaseEntity
     {
         private readonly List<BaseDomainEvent> _domainEvents = new List<BaseDomainEvent>();
 
