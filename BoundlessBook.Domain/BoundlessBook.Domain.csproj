@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BoundlessBook.Common\BoundlessBook.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserAggregate\" />
+  </ItemGroup>
+
 </Project>

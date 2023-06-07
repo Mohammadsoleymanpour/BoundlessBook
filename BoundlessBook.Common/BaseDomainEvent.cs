@@ -1,6 +1,6 @@
 ﻿namespace BoundlessBook.Common;
 
-public class BaseDomainEvent
+public class BaseDomainEvent : INotification
 {
     public DateTime CreationDate { get; protected set; }
 
