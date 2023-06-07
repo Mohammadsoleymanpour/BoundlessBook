@@ -2,8 +2,10 @@
 
 public class BaseEntity
 {
-    public long Id { get; protected set; }
-    public DateTime CreationDate { get; private set; }
+    public Guid Id { get; protected set; } = Guid.NewGuid();
+    public DateTime CreationDate { get; private set; } = DateTime.Now;
+    public bool IsDelete { get; set; } = false;
+
 
     public BaseEntity()
     {
