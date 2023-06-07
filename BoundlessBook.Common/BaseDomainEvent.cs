@@ -1,4 +1,6 @@
-﻿namespace BoundlessBook.Common;
+﻿using MediatR;
+
+namespace BoundlessBook.Common;
 
 public class BaseDomainEvent : INotification
 {
