@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="OrderAggregate\Enums\" />
+    <Folder Include="OrderAggregate\ValueObjects\" />
     <Folder Include="UserAggregate\Enums\" />
     <Folder Include="UserAggregate\Services\" />
   </ItemGroup>
