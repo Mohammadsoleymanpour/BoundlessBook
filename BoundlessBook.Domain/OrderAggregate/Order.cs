@@ -19,9 +19,29 @@ public class Order : AggregateRoot
     public Guid UserId { get; set; }
     public OrderStatus OrderStatus { get; set; }
     public OrderDiscount? OrderDiscount { get; set; }
-    public OrderAddress Address { get; set; }
+    public OrderAddress? Address { get; set; }
+    public ShippingMethod? ShippingMethod { get; set; }
     public DateTime LastUpdate { get; set; }
-    public float TotalPrice => OrderItems.Sum(c => c.TotalPrice);
+
+    public float TotalPrice
+    {
+        get
+        {
+            var totalItemPrice = OrderItems.Sum(c => c.TotalPrice);
+            if (ShippingMethod != null)
+            {
+                totalItemPrice += ShippingMethod.ShippingCost;
+            }
+
+            if (OrderDiscount != null)
+            {
+                totalItemPrice -= OrderDiscount.DiscountAmount;
+            }
+
+            return 0;
+        }
+    }
+
     public int ItemCount => OrderItems.Count();
 
     #region Relations
@@ -38,7 +58,7 @@ public class Order : AggregateRoot
     public void RemoveItem(Guid itemId)
     {
         var item = OrderItems.FirstOrDefault(c => c.Id == itemId);
-        if (item ==null)
+        if (item == null)
         {
             throw new NullOrEmptyDomainException("آبتمی برای حذف یافت نشد");
         }
