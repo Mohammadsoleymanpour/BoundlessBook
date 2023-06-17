@@ -14,6 +14,7 @@
     <Folder Include="OrderAggregate\Enums\" />
     <Folder Include="OrderAggregate\ValueObjects\" />
     <Folder Include="RoleAggregate\Enums\" />
+    <Folder Include="SellerAggregate\Enums\" />
     <Folder Include="UserAggregate\Enums\" />
     <Folder Include="UserAggregate\Services\" />
   </ItemGroup>

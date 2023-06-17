@@ -5,6 +5,10 @@ namespace BoundlessBook.Domain.RoleAggregate;
 
 public class Role:AggregateRoot
 {
+    public Role()
+    {
+            
+    }
     public Role(string title, List<RolePermission> rolePermissions)
     {
         Title = title;
