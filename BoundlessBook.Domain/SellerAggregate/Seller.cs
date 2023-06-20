@@ -12,8 +12,13 @@ public class Seller:AggregateRoot
         UserId = userId;
         ShopName = shopName;
         NationalCode = nationalCode;
-        
+        SellerInventories = new List<SellerInventory>();
 
+    }
+
+    public Seller()
+    {
+        
     }
     public Guid UserId { get; set; }
 
@@ -44,8 +49,40 @@ public class Seller:AggregateRoot
         {
             throw new InvalidDomainException("کد ملی وارد شده معتبر نیست");
         }
+    }
 
+    public void AddInventory(SellerInventory inventory)
+    {
+        if (SellerInventories.Any(c=>c.ProductId==inventory.ProductId))
+        {
+            throw new InvalidDomainException("این محصول قبلا ثبت شده است");
+        }
 
+        SellerInventories.Add(inventory);
+    }
+
+    public void EditInventory(SellerInventory inventory)
+    {
+        var currentInventory = SellerInventories.FirstOrDefault(c => c.Id == inventory.Id);
+        if (currentInventory == null)
+        {
+            throw new NullOrEmptyDomainException("انباری یافت نشد  ");
+        }
+
+        SellerInventories.Remove(currentInventory);
+        SellerInventories.Add(inventory);
+
+    }
+
+    public void DeleteInventory(Guid inventoryId)
+    {
+        var currentInventory= SellerInventories.FirstOrDefault(c=>c.Id==inventoryId);
+        if (currentInventory==null)
+        {
+            throw new NullOrEmptyDomainException("انباری یافت نشد");
+        }
+
+        SellerInventories.Remove(currentInventory);
     }
 
 }

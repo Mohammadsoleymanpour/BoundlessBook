@@ -1,8 +1,9 @@
-﻿using BoundlessBook.Common.Exceptions;
+﻿using BoundlessBook.Common;
+using BoundlessBook.Common.Exceptions;
 
 namespace BoundlessBook.Domain.SellerAggregate;
 
-public class SellerInventory
+public class SellerInventory:BaseEntity
 {
     public SellerInventory( Guid productId, int count, float price)
     {
@@ -20,5 +21,7 @@ public class SellerInventory
     public int Count { get; set; }
     public float Price { get; set; }
     public bool IsActive { get; set; }
+
+
 
 }
