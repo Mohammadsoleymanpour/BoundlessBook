@@ -8,6 +8,10 @@ namespace BoundlessBook.Domain.CategoryAggregate;
 
 public class Category:AggregateRoot
 {
+    public Category()
+    {
+        
+    }
     public Category(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
     {
         Guard(title,slug,categoryService);
