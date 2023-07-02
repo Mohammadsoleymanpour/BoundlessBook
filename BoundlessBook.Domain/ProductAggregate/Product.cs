@@ -2,6 +2,7 @@
 using BoundlessBook.Common.Exceptions;
 using BoundlessBook.Common.Tools;
 using BoundlessBook.Common.ValueObjects;
+using BoundlessBook.Domain.ProductAggregate.Services;
 
 namespace BoundlessBook.Domain.ProductAggregate;
 
@@ -11,8 +12,9 @@ public class Product:AggregateRoot
     {
         
     }
-    public Product(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, SeoData seoData)
+    public Product(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, IProductDomainService productService, SeoData seoData)
     {
+        Guard(title, slug, description, imageName, productService);
         Title = title;
         Description = description;
         ImageName = imageName;
@@ -34,8 +36,9 @@ public class Product:AggregateRoot
     public List<ProductSpecification> ProductSpecifications { get; set; }
 
 
-    public void Edit(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, SeoData seoData)
+    public void Edit(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, IProductDomainService productService, SeoData seoData)
     {
+        Guard(title,slug,description,imageName,productService);
         Title = title;
         Description = description;
         ImageName = imageName;
@@ -66,12 +69,16 @@ public class Product:AggregateRoot
         ProductSpecifications = specifications;
     }
 
-    public void Guard(string title,string slug ,string description, string imageName,iprodu)
+    public void Guard(string title,string slug ,string description, string imageName,IProductDomainService productService)
     {
         NullOrEmptyDomainException.CheckString(title,nameof(title));
         NullOrEmptyDomainException.CheckString(description,nameof(description));
         NullOrEmptyDomainException.CheckString(imageName,nameof(imageName));
 
+        if (productService.SlugIsExist(slug.ToSlug()))
+        {
+            throw new InvalidDomainException(" slug تکراری است");
+        }
 
     }
 }
