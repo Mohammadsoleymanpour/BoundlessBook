@@ -77,7 +77,7 @@ public class Product:AggregateRoot
 
         if (productService.SlugIsExist(slug.ToSlug()))
         {
-            throw new InvalidDomainException(" slug تکرار است");
+            throw new InvalidDomainException(" slug تکراری است");
         }
 
     }
