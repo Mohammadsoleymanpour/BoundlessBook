@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="CategoryAggregate\Service\" />
     <Folder Include="CommentAggregate\Enums\" />
+    <Folder Include="SiteEntities\" />
     <Folder Include="OrderAggregate\Enums\" />
     <Folder Include="OrderAggregate\ValueObjects\" />
     <Folder Include="RoleAggregate\Enums\" />
