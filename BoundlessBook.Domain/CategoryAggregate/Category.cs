@@ -30,7 +30,10 @@ public class Category:AggregateRoot
 
     public void AddChild(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
     {
-        Child.Add(new Category(title,slug,seoData,categoryService));
+        Child.Add(new Category(title,slug,seoData,categoryService)
+        {
+            ParentId = Id
+        });
     }
     public void Guard(string title, string slug,ICategoryDomainService categoryService)
     {
