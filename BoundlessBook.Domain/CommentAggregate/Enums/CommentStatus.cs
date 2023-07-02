@@ -2,5 +2,5 @@
 
 public enum CommentStatus
 {
-    
+    Pending,Accept,Reject,
 }
