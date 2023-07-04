@@ -11,11 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CategoryAggregate\Service\" />
+    <Folder Include="CommentAggregate\Enums\" />
+    <Folder Include="OrderAggregate\Repository\" />
+    <Folder Include="ProductAggregate\Repository\" />
     <Folder Include="OrderAggregate\Enums\" />
     <Folder Include="OrderAggregate\ValueObjects\" />
     <Folder Include="RoleAggregate\Enums\" />
     <Folder Include="SellerAggregate\Enums\" />
+    <Folder Include="SiteEntities\Repositories\" />
     <Folder Include="UserAggregate\Enums\" />
+    <Folder Include="UserAggregate\Repository\" />
     <Folder Include="UserAggregate\Services\" />
   </ItemGroup>
 
