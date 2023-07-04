@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Runtime;
-using BoundlessBook.Common;
+using BoundlessBook.Common.Common.Domain;
 using BoundlessBook.Common.Exceptions;
 
 namespace BoundlessBook.Domain.OrderAggregate;

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace BoundlessBook.Common.Tools;
+namespace BoundlessBook.Common.Common.Domain.Tools;
 
 public static class TextHelper
 {

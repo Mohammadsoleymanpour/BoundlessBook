@@ -1,4 +1,4 @@
-﻿using BoundlessBook.Common;
+﻿using BoundlessBook.Common.Common.Domain;
 
 namespace BoundlessBook.Domain.UserAggregate;
 

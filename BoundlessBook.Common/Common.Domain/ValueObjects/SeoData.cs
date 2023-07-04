@@ -1,4 +1,4 @@
-﻿namespace BoundlessBook.Common.ValueObjects;
+﻿namespace BoundlessBook.Common.Common.Domain.ValueObjects;
 
 public class SeoData : ValueObject
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace BoundlessBook.Common;
+namespace BoundlessBook.Common.Common.Domain;
 
 public class IranianNationalCodeChecker
 {

@@ -1,7 +1,7 @@
-﻿using BoundlessBook.Common;
-using BoundlessBook.Common.Exceptions;
-using BoundlessBook.Common.Tools;
-using BoundlessBook.Common.ValueObjects;
+﻿using BoundlessBook.Common.Common.Domain;
+using BoundlessBook.Common.Common.Domain.Exceptions;
+using BoundlessBook.Common.Common.Domain.Tools;
+using BoundlessBook.Common.Common.Domain.ValueObjects;
 using BoundlessBook.Domain.ProductAggregate.Services;
 
 namespace BoundlessBook.Domain.ProductAggregate;

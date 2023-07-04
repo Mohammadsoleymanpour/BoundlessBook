@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace BoundlessBook.Common.BaseRepository;
+namespace BoundlessBook.Common.Common.Domain.BaseRepository;
 
 public interface IBaseRepository<T> where T : BaseEntity
 {

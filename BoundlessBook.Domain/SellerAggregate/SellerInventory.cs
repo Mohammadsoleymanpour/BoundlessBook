@@ -1,4 +1,4 @@
-﻿using BoundlessBook.Common;
+﻿using BoundlessBook.Common.Common.Domain;
 using BoundlessBook.Common.Exceptions;
 
 namespace BoundlessBook.Domain.SellerAggregate;
