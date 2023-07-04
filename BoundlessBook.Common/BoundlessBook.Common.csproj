@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BaseRepository\" />
-    <Folder Include="Tools\" />
-    <Folder Include="ValueObjects\" />
+    <Folder Include="Common.Domain\BaseRepository\" />
+    <Folder Include="Common.Domain\Tools\" />
+    <Folder Include="Common.Domain\ValueObjects\" />
   </ItemGroup>
 
 </Project>

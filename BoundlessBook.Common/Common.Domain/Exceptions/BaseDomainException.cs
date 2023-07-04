@@ -1,4 +1,4 @@
-﻿namespace BoundlessBook.Common.Exceptions;
+﻿namespace BoundlessBook.Common.Common.Domain.Exceptions;
 
 public class BaseDomainException : Exception
 {

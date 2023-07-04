@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BoundlessBook.Common
+namespace BoundlessBook.Common.Common.Domain
 {
     public class AggregateRoot : BaseEntity
     {

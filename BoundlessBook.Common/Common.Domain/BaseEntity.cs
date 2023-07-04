@@ -1,4 +1,4 @@
-﻿namespace BoundlessBook.Common;
+﻿namespace BoundlessBook.Common.Common.Domain;
 
 public class BaseEntity
 {

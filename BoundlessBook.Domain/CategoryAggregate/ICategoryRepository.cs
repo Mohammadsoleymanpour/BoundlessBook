@@ -1,4 +1,4 @@
-﻿using BoundlessBook.Common.BaseRepository;
+﻿using BoundlessBook.Common.Common.Domain.BaseRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

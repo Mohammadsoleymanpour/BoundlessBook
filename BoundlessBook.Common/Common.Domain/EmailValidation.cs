@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace BoundlessBook.Common;
+namespace BoundlessBook.Common.Common.Domain;
 
 public static class EmailValidation
 {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace BoundlessBook.Common;
+namespace BoundlessBook.Common.Common.Domain;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class IgnoreMemberAttribute : Attribute
