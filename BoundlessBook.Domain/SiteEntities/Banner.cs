@@ -1,8 +1,9 @@
-﻿using BoundlessBook.Common.Exceptions;
+﻿using BoundlessBook.Common;
+using BoundlessBook.Common.Exceptions;
 
 namespace BoundlessBook.Domain.SiteEntities;
 
-public class Banner
+public class Banner:BaseEntity
 {
     public Banner()
     {

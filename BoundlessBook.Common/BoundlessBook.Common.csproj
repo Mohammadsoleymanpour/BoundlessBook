@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BaseRepository\" />
     <Folder Include="Tools\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
