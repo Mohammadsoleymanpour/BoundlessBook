@@ -7,7 +7,7 @@ using System.Windows.Input;
 using FluentValidation;
 using MediatR;
 
-namespace Common.Application.Validation
+namespace BoundlessBook.Common.Common.Application.Validation
 {
     public class CommandValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>

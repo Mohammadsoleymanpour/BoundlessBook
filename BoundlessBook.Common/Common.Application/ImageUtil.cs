@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
-namespace Common.Application
+namespace BoundlessBook.Common.Common.Application
 {
     public static class ImageConvertor
     {

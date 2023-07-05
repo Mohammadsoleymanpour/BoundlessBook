@@ -2,7 +2,7 @@
 using System.Drawing;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace Common.Application.Validation.CustomValidation.IFormFile
+namespace BoundlessBook.Common.Common.Application.Validation.CustomValidation.IFormFile
 {
     public class FileImageAttribute : ValidationAttribute, IClientModelValidator
     {

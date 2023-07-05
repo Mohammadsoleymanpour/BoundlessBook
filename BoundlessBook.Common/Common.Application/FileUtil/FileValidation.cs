@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Http;
 
-namespace Common.Application.FileUtil
+namespace BoundlessBook.Common.Common.Application.FileUtil
 {
     public static class FileValidation
     {

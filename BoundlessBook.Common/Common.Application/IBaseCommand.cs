@@ -1,5 +1,4 @@
-﻿using Common.Application;
-using MediatR;
+﻿using MediatR;
 
 namespace BoundlessBook.Common.Common.Application
 {

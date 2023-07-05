@@ -1,4 +1,4 @@
-﻿namespace Common.Application.Validation
+﻿namespace BoundlessBook.Common.Common.Application.Validation
 {
     public static class ValidationMessages
     {

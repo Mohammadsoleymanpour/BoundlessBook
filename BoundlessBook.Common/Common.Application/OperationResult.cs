@@ -1,4 +1,4 @@
-﻿namespace Common.Application
+﻿namespace BoundlessBook.Common.Common.Application
 {
     public class OperationResult<TData>
     {

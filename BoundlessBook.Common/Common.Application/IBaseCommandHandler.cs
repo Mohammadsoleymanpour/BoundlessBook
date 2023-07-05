@@ -1,7 +1,7 @@
 ﻿using BoundlessBook.Common.Common.Application;
 using MediatR;
 
-namespace Common.Application
+namespace BoundlessBook.Common.Common.Application
 {
     public interface IBaseCommandHandler<TCommand> : IRequestHandler<TCommand, OperationResult> where TCommand : IBaseCommand
     {

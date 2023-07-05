@@ -1,8 +1,10 @@
-﻿using Common.Application.Validation;
+﻿
+using BoundlessBook.Common.Common.Application.Validation;
+
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Common.Application
+namespace BoundlessBook.Common.Common.Application
 {
     public class CommonBootstrapper
     {

@@ -1,10 +1,10 @@
-﻿using BoundlessBook.Common.Common.Domain;
-using Common.Application.FileUtil;
-using Common.Application.SecurityUtil;
+﻿using BoundlessBook.Common.Common.Application.FileUtil;
+using BoundlessBook.Common.Common.Application.SecurityUtil;
+using BoundlessBook.Common.Common.Domain;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
-namespace Common.Application.Validation.FluentValidations
+namespace BoundlessBook.Common.Common.Application.Validation.FluentValidations
 {
     public static class FluentValidations
     {

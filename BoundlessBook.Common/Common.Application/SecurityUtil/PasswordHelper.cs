@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Common.Application.SecurityUtil;
+namespace BoundlessBook.Common.Common.Application.SecurityUtil;
 public static class PasswordHelper
 {
     public static string EncodePasswordMd5(string pass) //Encrypt using MD5   

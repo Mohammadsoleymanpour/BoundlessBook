@@ -1,14 +1,7 @@
-﻿using Common.Application.FileUtil.Interfaces;
-using Common.Application.Validation;
+﻿using BoundlessBook.Common.Common.Application.FileUtil.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Common.Application.FileUtil.Services
+namespace BoundlessBook.Common.Common.Application.FileUtil.Services
 {
     public class FileService : IFileService
     {

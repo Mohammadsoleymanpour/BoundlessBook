@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace Common.Application.FileUtil.Interfaces
+namespace BoundlessBook.Common.Common.Application.FileUtil.Interfaces
 {
     public interface IFileService
     {
@@ -11,7 +11,7 @@ namespace Common.Application.FileUtil.Interfaces
         /// <param name="file"></param>
         /// <param name="directoryPath"></param>
         /// <returns></returns>
-        Task SaveFile(IFormFile file,string directoryPath);
+        Task SaveFile(IFormFile file, string directoryPath);
 
         /// <summary>
         /// Saves the file with a unique name and returns the file name
@@ -19,7 +19,7 @@ namespace Common.Application.FileUtil.Interfaces
         /// <param name="file"></param>
         /// <param name="directoryPath"></param>
         /// <returns></returns>
-        Task<string> SaveFileAndGenerateName(IFormFile file,string directoryPath);
+        Task<string> SaveFileAndGenerateName(IFormFile file, string directoryPath);
         void DeleteFile(string path, string fileName);
         void DeleteFile(string filePath);
         void DeleteDirectory(string directoryPath);

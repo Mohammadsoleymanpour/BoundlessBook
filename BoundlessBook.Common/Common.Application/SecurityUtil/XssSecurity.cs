@@ -1,6 +1,6 @@
 ﻿using Ganss.Xss;
 
-namespace Common.Application.SecurityUtil
+namespace BoundlessBook.Common.Common.Application.SecurityUtil
 {
     public static class XssSecurity
     {
