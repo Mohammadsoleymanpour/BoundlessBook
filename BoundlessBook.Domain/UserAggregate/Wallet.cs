@@ -1,5 +1,5 @@
 ﻿using BoundlessBook.Common.Common.Domain;
-using BoundlessBook.Common.Exceptions;
+using BoundlessBook.Common.Common.Domain.Exceptions;
 using BoundlessBook.Domain.UserAggregate.Enums;
 
 namespace BoundlessBook.Domain.UserAggregate;

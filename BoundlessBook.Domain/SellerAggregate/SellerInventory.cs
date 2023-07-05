@@ -1,5 +1,5 @@
 ﻿using BoundlessBook.Common.Common.Domain;
-using BoundlessBook.Common.Exceptions;
+using BoundlessBook.Common.Common.Domain.Exceptions;
 
 namespace BoundlessBook.Domain.SellerAggregate;
 
