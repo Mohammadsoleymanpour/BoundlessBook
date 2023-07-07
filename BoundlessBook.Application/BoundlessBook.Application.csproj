@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Categories\Create\" />
-    <Folder Include="Categories\Edit\" />
-    <Folder Include="Categories\AddChild\" />
     <Folder Include="Comments\Create\" />
     <Folder Include="Comments\Edit\" />
     <Folder Include="Comments\ChangeStatus\" />
@@ -38,6 +36,11 @@
     <Folder Include="Users\EditAddress\" />
     <Folder Include="Users\ChargeWallet\" />
     <Folder Include="Users\Register\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoundlessBook.Common\BoundlessBook.Common.csproj" />
+    <ProjectReference Include="..\BoundlessBook.Domain\BoundlessBook.Domain.csproj" />
   </ItemGroup>
 
 </Project>
