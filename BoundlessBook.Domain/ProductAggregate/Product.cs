@@ -14,7 +14,7 @@ public class Product:AggregateRoot
     }
     public Product(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, IProductDomainService productService, SeoData seoData)
     {
-        Guard(title, slug, description, imageName, productService);
+        Guard(title, slug, description, productService);
         Title = title;
         Description = description;
         ImageName = imageName;
@@ -36,12 +36,11 @@ public class Product:AggregateRoot
     public List<ProductSpecification> ProductSpecifications { get; set; }
 
 
-    public void Edit(string title, string description, string imageName, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, IProductDomainService productService, SeoData seoData)
+    public void Edit(string title, string description, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, IProductDomainService productService, SeoData seoData)
     {
-        Guard(title,slug,description,imageName,productService);
+        Guard(title,slug,description,productService);
         Title = title;
         Description = description;
-        ImageName = imageName;
         CategoryId = categoryId;
         SubCategoryId = subCategoryId;
         SecondarySubCategoryId = secondarySubCategoryId;
@@ -69,16 +68,21 @@ public class Product:AggregateRoot
         ProductSpecifications = specifications;
     }
 
-    public void Guard(string title,string slug ,string description, string imageName,IProductDomainService productService)
+    public void Guard(string title,string slug ,string description,IProductDomainService productService)
     {
         NullOrEmptyDomainException.CheckString(title,nameof(title));
         NullOrEmptyDomainException.CheckString(description,nameof(description));
-        NullOrEmptyDomainException.CheckString(imageName,nameof(imageName));
 
         if (productService.SlugIsExist(slug.ToSlug()))
         {
             throw new InvalidDomainException(" slug تکراری است");
         }
 
+    }
+
+    public void SetProductImage(string imageName)
+    {
+        NullOrEmptyDomainException.CheckString(imageName,nameof(imageName));
+        ImageName = imageName;
     }
 }
