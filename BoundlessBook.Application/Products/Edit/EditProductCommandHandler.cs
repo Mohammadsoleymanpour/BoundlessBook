@@ -54,7 +54,7 @@ public class EditProductCommandHandler : IBaseCommandHandler<EditProductCommand>
     {
         if (imageFile != null)
         {
-
+            _fileService.DeleteFile(Directories.ProductImage,oldImageName);
         }
     }
 }
