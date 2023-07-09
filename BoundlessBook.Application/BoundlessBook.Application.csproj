@@ -9,8 +9,8 @@
   <ItemGroup>
     <Folder Include="Categories\Create\" />
     <Folder Include="Comments\ChangeStatus\" />
-    <Folder Include="Orders\AddItem\" />
-    <Folder Include="Orders\ChangeCount\" />
+    <Folder Include="Orders\ChangeCount\IncreaseCount\" />
+    <Folder Include="Orders\ChangeCount\DecreaseCount\" />
     <Folder Include="Orders\RemoveItem\" />
     <Folder Include="Products\Create\" />
     <Folder Include="Products\Edit\" />
