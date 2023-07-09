@@ -31,8 +31,8 @@ public class CheckoutOrderCommandValidator:AbstractValidator<CheckOutOrderComman
         RuleFor(c => c.Shire)
             .NotNull().NotEmpty().WithMessage(ValidationMessages.required("استان"));
 
-        RuleFor(c => c.OrderId)
-            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("آیدی سفارش"));
+        RuleFor(c => c.UserId)
+            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("آیدی کاربر"));
 
         RuleFor(c => c.PhoneNumber)
             .NotNull().NotEmpty().WithMessage(ValidationMessages.required("شماره تلفن")).MaximumLength(11).MaximumLength(11)
