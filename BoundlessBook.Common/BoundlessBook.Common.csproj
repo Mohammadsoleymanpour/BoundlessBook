@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common.Application\Utilities\" />
     <Folder Include="Common.Domain\BaseRepository\" />
     <Folder Include="Common.Domain\Tools\" />
     <Folder Include="Common.Domain\ValueObjects\" />
