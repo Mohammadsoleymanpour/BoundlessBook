@@ -53,14 +53,16 @@ public class Product:AggregateRoot
         image.ProductId = Id;
         ProductImages.Add(image);
     }
-    public void RemoveImage(Guid imageIdGuid)
+    public string RemoveImage(Guid imageIdGuid)
     {
         var image = ProductImages.FirstOrDefault(x => x.Id==imageIdGuid);
+        string imageName = image.ImageName;
         if (image == null)
         {
             throw new NullOrEmptyDomainException("تصویری یافت نشد");
         }
         ProductImages.Remove(image);
+        return imageName;
     }
     public void AddSpecification(List<ProductSpecification> specifications)
     {
