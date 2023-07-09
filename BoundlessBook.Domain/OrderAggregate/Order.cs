@@ -52,11 +52,20 @@ public class Order : AggregateRoot
 
     public void AddItem(OrderItem item)
     {
+        Guard();
+
+        var oldItem = OrderItems.FirstOrDefault(c => c.InventoryId == item.InventoryId);
+        if (oldItem != null)
+        {
+            oldItem.ChangeCount(item.Count + oldItem.Count);
+            return;
+        }
         OrderItems.Add(item);
     }
 
     public void RemoveItem(Guid itemId)
     {
+        Guard();
         var item = OrderItems.FirstOrDefault(c => c.Id == itemId);
         if (item == null)
         {
@@ -66,6 +75,25 @@ public class Order : AggregateRoot
         OrderItems.Remove(item);
     }
 
+    public void IncreaseItemCount(Guid itemId, int count)
+    {
+        var item = OrderItems.FirstOrDefault(c => c.Id == itemId);
+        if (item == null)
+        {
+            throw new NullOrEmptyDomainException("آیتمی یافت نشد");
+        }
+        item.IncreaseCount(count);
+    }
+     
+    public void DecreaseItemCount(Guid itemId, int count)
+    {
+        var item = OrderItems.FirstOrDefault(c => c.Id == itemId);
+        if (item == null)
+        {
+            throw new NullOrEmptyDomainException("آیتمی یافت نشد");
+        }
+        item.IncreaseCount(count);
+    }
     public void ChangeItemCount(Guid itemId, int count)
     {
         var item = OrderItems.FirstOrDefault(c => c.Id == itemId);
@@ -74,7 +102,7 @@ public class Order : AggregateRoot
             throw new NullOrEmptyDomainException("آیتمی یافت نشد");
         }
 
-        item.ChangeCount(count);
+        item.DeCreaseCount(count);
     }
 
     public void ChangeStatus(OrderStatus status)
@@ -85,6 +113,15 @@ public class Order : AggregateRoot
 
     public void CheckOutAddress(OrderAddress address)
     {
+        Guard();
         Address = address;
+    }
+
+    public void Guard()
+    {
+        if (OrderStatus != OrderStatus.Pending)
+        {
+            throw new InvalidDomainException("امکان ویرایش این سفارش وجود ندارد");
+        }
     }
 }
