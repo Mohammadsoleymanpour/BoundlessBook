@@ -16,11 +16,7 @@ public class CreateRoleCommandHandler:IBaseCommandHandler<CreateRoleCommand>
         var permissions = new List<RolePermission>();
         foreach (var requestPermission in request.Permissions)
         {
-            permissions.Add(new RolePermission()
-            {
-                IsDelete = false,
-                Permission = requestPermission,
-            });
+            permissions.Add(new RolePermission(requestPermission));
         }
 
         var role = new Role(request.Title, permissions);

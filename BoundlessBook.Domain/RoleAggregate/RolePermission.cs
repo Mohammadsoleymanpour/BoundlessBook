@@ -5,6 +5,10 @@ namespace BoundlessBook.Domain.RoleAggregate;
 
 public class RolePermission:BaseEntity
 {
+    public RolePermission()
+    {
+        
+    }
     public RolePermission( Permission permission)
     {
         Permission = permission;
