@@ -19,6 +19,7 @@
     <Folder Include="OrderAggregate\ValueObjects\" />
     <Folder Include="RoleAggregate\Enums\" />
     <Folder Include="SellerAggregate\Enums\" />
+    <Folder Include="SellerAggregate\Services\" />
     <Folder Include="SiteEntities\Repositories\" />
     <Folder Include="UserAggregate\Enums\" />
     <Folder Include="UserAggregate\Repository\" />
