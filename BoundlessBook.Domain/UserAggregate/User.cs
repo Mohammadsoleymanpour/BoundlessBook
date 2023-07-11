@@ -9,42 +9,49 @@ namespace BoundlessBook.Domain.UserAggregate;
 
 public class User : AggregateRoot
 {
-    public User(string name, string family, string phoneNumber, string email, string password, Gender gender,IUserService userService)
+    public User(string name, string family, string phoneNumber, string email, string password, Gender gender,IUserDomainService userDomainService)
     {
-        Guard(phoneNumber,email,userService);
+        Guard(phoneNumber,email,userDomainService);
         Name = name;
         Family = family;
         PhoneNumber = phoneNumber;
         Email = email;
         Password = password;
         Gender = gender;
+        AvatarName = "avatar.png";
     }
     public string Name { get; private set; }
     public string Family { get; set; }
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+    public string AvatarName { get; set; }
     public Gender Gender { get; set; }
     public List<UserRole> UserRoles { get; set; }
     public List<Wallet> Wallets { get; set; }
     public List<UserAddress> UserAddresses { get; set; }
 
-    public static User RegisterUser(string phoneNumber, string password,IUserService userService)
+    public static User RegisterUser(string phoneNumber, string password,IUserDomainService userDomainService)
     {
-        return new User("", "", phoneNumber, "", password, Gender.None, userService);
+        return new User("", "", phoneNumber, "", password, Gender.None, userDomainService);
     }
 
-    public void EditUser(string name, string family, string phoneNumber, string email, string password, Gender gender,IUserService userService)
+    public void EditUser(string name, string family, string phoneNumber, string email,string avatar ,Gender gender,IUserDomainService userDomainService)
     {
-        Guard(phoneNumber,email,userService);
+        Guard(phoneNumber,email,userDomainService);
         Name = name;
         Family = family;
         PhoneNumber = phoneNumber;
         Email = email;
-        Password = password;
         Gender = gender;
+       
     }
 
+    public void SetAvatar(string avatar)
+    {
+        NullOrEmptyDomainException.CheckString(avatar,nameof(avatar));
+        AvatarName = avatar;
+    }
     public void AddAddress(UserAddress address)
     {
         address.UserId = Id;
@@ -86,7 +93,7 @@ public class User : AggregateRoot
         UserRoles.AddRange(roles);
     }
 
-    public void Guard(string phoneNumber, string email, IUserService userService)
+    public void Guard(string phoneNumber, string email, IUserDomainService userDomainService)
     {
         NullOrEmptyDomainException.CheckString(phoneNumber, nameof(phoneNumber));
         NullOrEmptyDomainException.CheckString(email, nameof(email));
@@ -103,7 +110,7 @@ public class User : AggregateRoot
 
         if (email != Email)
         {
-            if (userService.IsEmailExist(email))
+            if (userDomainService.IsEmailExist(email))
             {
                 throw new InvalidDomainException("ایمیل وارد شده تکراری است");
             }
@@ -111,7 +118,7 @@ public class User : AggregateRoot
 
         if (phoneNumber != PhoneNumber)
         {
-            if (userService.IsEmailExist(phoneNumber))
+            if (userDomainService.IsEmailExist(phoneNumber))
             {
                 throw new InvalidDomainException("شماره موبایل وارد شده تکراری است");
             }
