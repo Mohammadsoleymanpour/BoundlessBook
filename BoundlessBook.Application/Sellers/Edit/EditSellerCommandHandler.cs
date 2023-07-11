@@ -22,7 +22,7 @@ public class EditSellerCommandHandler:IBaseCommandHandler<EditSellerCommand>
             return OperationResult.NotFound();
         }
 
-        currentSeller.Edit(request.ShopName,request.NationalCode,_domainService);
+        currentSeller.Edit(request.ShopName,request.NationalCode,request.SellerStatus,_domainService);
         await _repository.Save();
         return OperationResult.Success();
     }

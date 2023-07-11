@@ -39,7 +39,7 @@ public class Seller : AggregateRoot
         LastUpdate = DateTime.Now;
     }
 
-    public void Edit(string name, string nationalCode, ISellerDomainService sellerDomainService)
+    public void Edit(string name, string nationalCode,SellerStatus status, ISellerDomainService sellerDomainService)
     {
         Guard(name, nationalCode);
         ShopName = name;
@@ -51,6 +51,8 @@ public class Seller : AggregateRoot
             }
         }
         NationalCode = nationalCode;
+        ChangeStatus(status);
+        LastUpdate = DateTime.Now;
     }
 
     public void Guard(string shopName, string nationalCode)
@@ -73,16 +75,16 @@ public class Seller : AggregateRoot
         SellerInventories.Add(inventory);
     }
 
-    public void EditInventory(SellerInventory inventory)
+    public void EditInventory(Guid inventoryId,int count,float price,int? discountPercent)
     {
-        var currentInventory = SellerInventories.FirstOrDefault(c => c.Id == inventory.Id);
+        var currentInventory = SellerInventories.FirstOrDefault(c => c.Id == inventoryId);
         if (currentInventory == null)
         {
-            throw new NullOrEmptyDomainException("انباری یافت نشد  ");
+            throw new NullOrEmptyDomainException("انباری یافت نشد");
         }
 
-        SellerInventories.Remove(currentInventory);
-        SellerInventories.Add(inventory);
+        //TODO CHECK WORK
+        currentInventory.Edit(count,price,discountPercent);
 
     }
 
