@@ -32,9 +32,10 @@ public class EditUserCommandHandler : IBaseCommandHandler<EditUserCommand>
         }
         var avatarName = await _fileService.SaveFileAndGenerateName(request.AvatarFile, Directories.UserAvatar);
 
-        currentUser.EditUser(request.Name, request.Family, request.PhoneNumber, request.Email, avatarName,
+        currentUser.EditUser(request.Name, request.Family, request.PhoneNumber, request.Email,
             request.Gender, _userDomainService);
-
+         
+        currentUser.SetAvatar(avatarName);
         await _userRepository.Save();
         return OperationResult.Success();
     }

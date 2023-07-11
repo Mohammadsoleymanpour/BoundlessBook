@@ -36,7 +36,7 @@ public class User : AggregateRoot
         return new User("", "", phoneNumber, "", password, Gender.None, userDomainService);
     }
 
-    public void EditUser(string name, string family, string phoneNumber, string email,string avatar ,Gender gender,IUserDomainService userDomainService)
+    public void EditUser(string name, string family, string phoneNumber, string email ,Gender gender,IUserDomainService userDomainService)
     {
         Guard(phoneNumber,email,userDomainService);
         Name = name;
