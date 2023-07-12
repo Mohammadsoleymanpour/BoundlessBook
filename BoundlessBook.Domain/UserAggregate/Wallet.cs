@@ -6,7 +6,7 @@ namespace BoundlessBook.Domain.UserAggregate;
 
 public class Wallet : BaseEntity
 {
-    public Wallet( float price, string? description, bool isFinally, DateTime finallyDate, WalletType type)
+    public Wallet( float price, string? description, bool isFinally, WalletType type)
     {
         if (price<500)
         {
@@ -15,8 +15,11 @@ public class Wallet : BaseEntity
         Price = price;
         Description = description;
         IsFinally = isFinally;
-        FinallyDate = finallyDate;
         Type = type;
+        if (isFinally)
+        {
+            FinallyDate = DateTime.Now;
+        }
     }
 
 

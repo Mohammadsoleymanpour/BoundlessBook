@@ -70,9 +70,9 @@ public class User : AggregateRoot
         UserAddresses.Add(address);
     }
 
-    public void RemoveAddress(UserAddress address)
+    public void RemoveAddress(Guid addressId)
     {
-        var oldAddress = UserAddresses.FirstOrDefault(c => c.Id == address.Id);
+        var oldAddress = UserAddresses.FirstOrDefault(c => c.Id == addressId);
         if (oldAddress == null)
         {
             throw new NullOrEmptyDomainException("آدرسی یافت نشد");
