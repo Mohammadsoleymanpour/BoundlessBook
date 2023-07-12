@@ -23,7 +23,6 @@
     <Folder Include="SiteEntities\Repositories\" />
     <Folder Include="UserAggregate\Enums\" />
     <Folder Include="UserAggregate\Repository\" />
-    <Folder Include="UserAggregate\Services\" />
   </ItemGroup>
 
 </Project>

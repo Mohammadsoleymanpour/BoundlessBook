@@ -5,7 +5,7 @@ namespace BoundlessBook.Domain.UserAggregate;
 
 public class UserAddress : BaseEntity
 {
-    public UserAddress(string shire, string city, string postalCode, string postalAddress, string name, string family, string nationalCode)
+    public UserAddress(string shire, string city, string postalCode,string phoneNumber ,string postalAddress, string name, string family, string nationalCode)
     {
         Guard(shire, city, postalCode, postalAddress, name, family, nationalCode);
         Shire = shire;
@@ -16,6 +16,7 @@ public class UserAddress : BaseEntity
         Family = family;
         NationalCode = nationalCode;
         IsActive = false;
+        PhoneNumber = phoneNumber;
     }
     public Guid UserId { get; set; }
     public string Shire { get; set; }
@@ -25,12 +26,13 @@ public class UserAddress : BaseEntity
     public string Name { get; set; }
     public string Family { get; set; }
     public string NationalCode { get; set; }
+    public string PhoneNumber { get; set; }
     public bool IsActive { get; set; }
     public void SetActive()
     {
         IsActive = true;
     }
-    public void Edit(string shire, string city, string postalCode, string postalAddress, string name, string family,
+    public void Edit(string shire, string city, string postalCode,string phoneNumber, string postalAddress, string name, string family,
         string nationalCode)
     {
         Guard(shire, city, postalCode, postalAddress, name, family,nationalCode);
@@ -41,6 +43,7 @@ public class UserAddress : BaseEntity
         Name = name;
         Family = family;
         NationalCode = nationalCode;
+        PhoneNumber = phoneNumber;
     }
 
     public void Guard(string shire, string city, string postalCode, string postalAddress, string name, string family,
