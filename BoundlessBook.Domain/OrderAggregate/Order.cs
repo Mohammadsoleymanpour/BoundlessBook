@@ -2,6 +2,7 @@
 using BoundlessBook.Common.Common.Domain.Exceptions;
 using BoundlessBook.Domain.OrderAggregate.Enums;
 using BoundlessBook.Domain.OrderAggregate.ValueObjects;
+using BoundlessBook.Domain.SiteEntities;
 
 namespace BoundlessBook.Domain.OrderAggregate;
 
@@ -30,7 +31,7 @@ public class Order : AggregateRoot
             var totalItemPrice = OrderItems.Sum(c => c.TotalPrice);
             if (ShippingMethod != null)
             {
-                totalItemPrice += ShippingMethod.ShippingCost;
+                totalItemPrice += ShippingMethod.Cost;
             }
 
             if (OrderDiscount != null)

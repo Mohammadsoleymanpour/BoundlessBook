@@ -22,9 +22,9 @@
   <ItemGroup>
     <Folder Include="CategoryAggregate\" />
     <Folder Include="CommentAggregate\" />
+    <Folder Include="SiteEntitiesAggregate\Repositories\" />
     <Folder Include="_Utilities\" />
     <Folder Include="UserAggregate\" />
-    <Folder Include="SiteEntitiesAggregate\" />
     <Folder Include="SellerAggregate\" />
     <Folder Include="RoleAggregate\" />
     <Folder Include="ProductAggregate\" />

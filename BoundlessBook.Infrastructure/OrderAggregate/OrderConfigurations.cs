@@ -12,7 +12,7 @@ public class OrderConfigurations:IEntityTypeConfiguration<Order>
 
         builder.OwnsOne(c => c.ShippingMethod, option =>
         {
-            option.Property(c => c.ShippingType)
+            option.Property(c => c.Title)
                 .HasMaxLength(50);
         });
 
