@@ -4,5 +4,5 @@ namespace BoundlessBook.Domain.OrderAggregate.Repository;
 
 public interface IOrderRepository: IBaseRepository<Order>
 {
-    Task<Order> GetUserCurrentOrder(Guid  userId);
+    Task<Order?> GetUserCurrentOrder(Guid  userId);
 }
