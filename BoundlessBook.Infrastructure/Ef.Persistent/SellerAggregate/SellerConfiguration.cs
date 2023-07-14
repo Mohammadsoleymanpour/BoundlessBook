@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.SellerAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.SellerAggregate;
 
-public class SellerConfiguration:IEntityTypeConfiguration<Seller>
+public class SellerConfiguration : IEntityTypeConfiguration<Seller>
 {
     public void Configure(EntityTypeBuilder<Seller> builder)
     {

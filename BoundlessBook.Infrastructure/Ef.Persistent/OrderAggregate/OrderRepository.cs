@@ -4,9 +4,9 @@ using BoundlessBook.Domain.OrderAggregate.Repository;
 using BoundlessBook.Infrastructure._Utilities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoundlessBook.Infrastructure.OrderAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.OrderAggregate;
 
-public class OrderRepository:BaseRepository<Order>,IOrderRepository
+public class OrderRepository : BaseRepository<Order>, IOrderRepository
 {
     private readonly BoundlessBookContext _context;
     public OrderRepository(BoundlessBookContext context) : base(context)

@@ -2,9 +2,9 @@
 using BoundlessBook.Domain.SiteEntities.Repositories;
 using BoundlessBook.Infrastructure._Utilities;
 
-namespace BoundlessBook.Infrastructure.SiteEntitiesAggregate.Repositories;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.SiteEntitiesAggregate.Repositories;
 
-public class ShippingRepository : BaseRepository<ShippingMethod>,IShippingMethodRepository
+public class ShippingRepository : BaseRepository<ShippingMethod>, IShippingMethodRepository
 {
     private readonly BoundlessBookContext _context;
     public ShippingRepository(BoundlessBookContext context) : base(context)

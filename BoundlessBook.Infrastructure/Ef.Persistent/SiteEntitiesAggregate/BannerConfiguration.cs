@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.SiteEntitiesAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.SiteEntitiesAggregate;
 
-public class BannerConfiguration:IEntityTypeConfiguration<Banner>
+public class BannerConfiguration : IEntityTypeConfiguration<Banner>
 {
     public void Configure(EntityTypeBuilder<Banner> builder)
     {

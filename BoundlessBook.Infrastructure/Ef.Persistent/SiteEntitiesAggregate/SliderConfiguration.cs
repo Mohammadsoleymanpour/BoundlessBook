@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.SiteEntitiesAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.SiteEntitiesAggregate;
 
-public class SliderConfiguration:IEntityTypeConfiguration<Slider>
+public class SliderConfiguration : IEntityTypeConfiguration<Slider>
 {
     public void Configure(EntityTypeBuilder<Slider> builder)
     {
