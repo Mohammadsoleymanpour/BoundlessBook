@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.OrderAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.OrderAggregate;
 
-public class OrderConfigurations:IEntityTypeConfiguration<Order>
+public class OrderConfigurations : IEntityTypeConfiguration<Order>
 {
     public void Configure(EntityTypeBuilder<Order> builder)
     {

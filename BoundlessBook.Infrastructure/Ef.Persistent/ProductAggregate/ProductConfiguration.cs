@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.ProductAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.ProductAggregate;
 
 public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.RoleAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.RoleAggregate;
 
-public class RoleConfiguration:IEntityTypeConfiguration<Role>
+public class RoleConfiguration : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {

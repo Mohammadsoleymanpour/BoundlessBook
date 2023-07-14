@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.SiteEntitiesAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.SiteEntitiesAggregate;
 
-public class ShippingMethodConfiguration:IEntityTypeConfiguration<ShippingMethod>
+public class ShippingMethodConfiguration : IEntityTypeConfiguration<ShippingMethod>
 {
     public void Configure(EntityTypeBuilder<ShippingMethod> builder)
     {

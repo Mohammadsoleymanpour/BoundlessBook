@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BoundlessBook.Infrastructure.UserAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.UserAggregate;
 
-public class UserConfiguration:IEntityTypeConfiguration<User>
+public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
