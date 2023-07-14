@@ -1,6 +1,11 @@
-﻿namespace BoundlessBook.Infrastructure.RoleAggregate;
+﻿using BoundlessBook.Domain.RoleAggregate;
+using BoundlessBook.Infrastructure._Utilities;
 
-public class RoleRepository
+namespace BoundlessBook.Infrastructure.RoleAggregate;
+
+public class RoleRepository:BaseRepository<Role>,IRoleRepository
 {
-    
+    public RoleRepository(BoundlessBookContext context) : base(context)
+    {
+    }
 }
