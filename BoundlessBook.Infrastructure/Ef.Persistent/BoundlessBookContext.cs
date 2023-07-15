@@ -8,13 +8,13 @@ using BoundlessBook.Domain.SiteEntities;
 using BoundlessBook.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoundlessBook.Infrastructure;
+namespace BoundlessBook.Infrastructure.Ef.Persistent;
 
-public class BoundlessBookContext:DbContext
+public class BoundlessBookContext : DbContext
 {
-    public BoundlessBookContext(DbContextOptions<BoundlessBookContext> option):base(option)
+    public BoundlessBookContext(DbContextOptions<BoundlessBookContext> option) : base(option)
     {
-        
+
     }
 
     public DbSet<Category> Categories { get; set; }

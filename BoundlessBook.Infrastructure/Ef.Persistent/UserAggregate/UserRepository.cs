@@ -2,7 +2,7 @@
 using BoundlessBook.Domain.UserAggregate.Repository;
 using BoundlessBook.Infrastructure._Utilities;
 
-namespace BoundlessBook.Infrastructure.Ef.Persistant.UserAggregate;
+namespace BoundlessBook.Infrastructure.Ef.Persistent.UserAggregate;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
