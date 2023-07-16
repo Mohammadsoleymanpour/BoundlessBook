@@ -27,6 +27,10 @@ public class GetOrderByIdQueryHandler : IQueryHandler<GetOrderByIdQuery, OrderDt
 
         var orderDto = order.Map();
         orderDto.UserFullName = await _boundlessBookContext.Users.Where(c => c.Id == order.UserId)
-            .Select(c => $"{c.Name} {c.Family}").FirstAsync();
+            .Select(c => $"{c.Name} {c.Family}").FirstAsync(cancellationToken);
+
+       orderDto.OrderItems = await orderDto.GetOrderItems(_dapperContext);
+
+        return orderDto;
     }
 }
