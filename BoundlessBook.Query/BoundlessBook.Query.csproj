@@ -11,6 +11,8 @@
     <Folder Include="Categories\GetById\" />
     <Folder Include="Categories\GetByParentId\" />
     <Folder Include="Comments\DTOs\" />
+    <Folder Include="Orders\GetById\" />
+    <Folder Include="Orders\DTOs\" />
   </ItemGroup>
 
   <ItemGroup>

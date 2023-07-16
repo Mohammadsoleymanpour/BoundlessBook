@@ -8,7 +8,7 @@ public interface IQuery<TResponse>:IRequest<TResponse> where TResponse : class
     
 }
 
-public class QueryFilter<TResponse, TParams> : IRequest<TResponse> where TResponse : BaseFilter
+public class QueryFilter<TResponse, TParams> : IQuery<TResponse> where TResponse : BaseFilter
     where TParams : BaseFilterParam
 {
     public TParams FilterParam { get; set; }
