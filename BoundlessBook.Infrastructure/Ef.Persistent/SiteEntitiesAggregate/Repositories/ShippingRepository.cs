@@ -14,6 +14,6 @@ public class ShippingRepository : BaseRepository<ShippingMethod>, IShippingMetho
 
     public void Delete(ShippingMethod method)
     {
-        _context.ShippingMethods.Remove(method);
+        return ;
     }
 }

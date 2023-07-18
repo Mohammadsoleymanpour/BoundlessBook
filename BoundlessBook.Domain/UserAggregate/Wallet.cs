@@ -6,6 +6,10 @@ namespace BoundlessBook.Domain.UserAggregate;
 
 public class Wallet : BaseEntity
 {
+    public Wallet()
+    {
+        
+    }
     public Wallet( float price, string? description, bool isFinally, WalletType type)
     {
         if (price<500)

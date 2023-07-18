@@ -1,3 +1,9 @@
+using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Common.Common.Application.FileUtil.Interfaces;
+using BoundlessBook.Common.Common.Application.FileUtil.Services;
+using BoundlessBook.Config;
+using BoundlessBook.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.RegisterDependency(connectionString);
+//InfrastructureDI.Init(builder.Services, connectionString);
+CommonBootstrapper.Init(builder.Services);
+builder.Services.AddTransient<IFileService, FileService>();
 
 var app = builder.Build();
 

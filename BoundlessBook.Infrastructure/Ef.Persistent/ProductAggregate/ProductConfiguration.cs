@@ -9,15 +9,21 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     public void Configure(EntityTypeBuilder<Product> builder)
     {
         builder.ToTable("Products", "product");
-        builder.HasIndex(c => c.Slug).IsUnique();
+        builder.HasIndex(b => b.Slug).IsUnique();
 
-        builder.Property(c => c.Title).IsRequired().HasMaxLength(100);
+        builder.Property(b => b.Title)
+            .IsRequired()
+            .HasMaxLength(200);
+        builder.Property(b => b.Description)
+            .IsRequired();
 
-        builder.Property(c => c.Description).IsRequired();
+        builder.Property(b => b.ImageName)
+            .IsRequired()
+            .HasMaxLength(110);
 
-        builder.Property(c => c.ImageName).IsRequired().HasMaxLength(100);
-
-        builder.Property(c => c.Slug).IsRequired().IsUnicode();
+        builder.Property(b => b.Slug)
+            .IsRequired()
+            .IsUnicode(false);
 
         builder.OwnsOne(b => b.SeoData, config =>
         {

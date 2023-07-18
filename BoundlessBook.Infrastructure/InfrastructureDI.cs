@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using BoundlessBook.Domain.CategoryAggregate;
+using BoundlessBook.Domain.CommentAggregate;
 using BoundlessBook.Domain.OrderAggregate.Repository;
 using BoundlessBook.Domain.ProductAggregate.Repository;
 using BoundlessBook.Domain.RoleAggregate;
@@ -9,6 +10,7 @@ using BoundlessBook.Domain.UserAggregate.Repository;
 using BoundlessBook.Infrastructure.Dapper.Persistent;
 using BoundlessBook.Infrastructure.Ef.Persistent;
 using BoundlessBook.Infrastructure.Ef.Persistent.CategoryAggregate;
+using BoundlessBook.Infrastructure.Ef.Persistent.CommentAggregate;
 using BoundlessBook.Infrastructure.Ef.Persistent.OrderAggregate;
 using BoundlessBook.Infrastructure.Ef.Persistent.ProductAggregate;
 using BoundlessBook.Infrastructure.Ef.Persistent.RoleAggregate;
@@ -33,6 +35,7 @@ public static class InfrastructureDI
         services.AddTransient<ISliderRepository, SliderRepository>();
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IShippingMethodRepository, ShippingRepository>();
+        services.AddTransient<ICommentRepository, CommentRepository>();
 
 
         services.AddTransient(_ => new DapperContext(connectionString));
