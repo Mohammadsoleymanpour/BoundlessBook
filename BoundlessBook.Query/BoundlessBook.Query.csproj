@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\DTOs\" />
+    <Folder Include="Categories\GetById\" />
+    <Folder Include="Categories\GetByParentId\" />
+    <Folder Include="Comments\DTOs\" />
+    <Folder Include="Orders\GetById\" />
+    <Folder Include="Orders\DTOs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoundlessBook.Common\BoundlessBook.Common.csproj" />
+    <ProjectReference Include="..\BoundlessBook.Infrastructure\BoundlessBook.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
