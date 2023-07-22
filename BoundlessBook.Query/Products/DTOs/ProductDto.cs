@@ -10,9 +10,9 @@ public class ProductDto:BaseDto
     public string Title { get; set; }
     public string Description { get; set; }
     public string ImageName { get; set; }
-    public Guid CategoryId { get; set; } 
-    public Guid SubCategoryId { get; set; }
-    public Guid SecondarySubCategoryId { get; set; }
+    public ProductCategoryDto Category { get; set; } 
+    public ProductCategoryDto SubCategory { get; set; }
+    public ProductCategoryDto SecondarySubCategory { get; set; }
     public string Slug { get; set; }
     public SeoData SeoData { get; set; }
     public List<ProductImageDto> ProductImages { get; set; }
@@ -49,4 +49,13 @@ public class ProductSpecificationDto : BaseDto
 {
     public string Key { get; set; }
     public string Value { get; set; } 
+}
+
+public class ProductCategoryDto : BaseDto
+{
+    public string Title { get; set; }
+    public Guid? ParentId { get; set; }
+    public string Slug { get; set; }
+    public SeoData SeoData { get; set; }
+
 }
