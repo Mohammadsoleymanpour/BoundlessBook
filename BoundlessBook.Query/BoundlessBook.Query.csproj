@@ -13,6 +13,8 @@
     <Folder Include="Comments\DTOs\" />
     <Folder Include="Orders\GetById\" />
     <Folder Include="Orders\DTOs\" />
+    <Folder Include="Products\GetByFilter\" />
+    <Folder Include="Products\DTOs\" />
   </ItemGroup>
 
   <ItemGroup>
