@@ -21,6 +21,8 @@
     <Folder Include="Seller\DTOs\" />
     <Folder Include="Seller\GetById\" />
     <Folder Include="Seller\GetList\" />
+    <Folder Include="SiteEntities\Sliders\DTOs\" />
+    <Folder Include="SiteEntities\Sliders\GetById\" />
   </ItemGroup>
 
   <ItemGroup>

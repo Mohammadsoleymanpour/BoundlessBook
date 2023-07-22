@@ -16,7 +16,7 @@ public class Banner:BaseEntity
         Link = link;
         ImageName = imageName;
         BannerPosition = bannerPosition;
-    }
+    }  
     public string Link { get; set; }
     public string ImageName { get; set; }
     public BannerPosition BannerPosition { get; set; }
