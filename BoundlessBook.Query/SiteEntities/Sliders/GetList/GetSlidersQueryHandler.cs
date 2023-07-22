@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BoundlessBook.Query.SiteEntities.Sliders.GetList;
 
-public class GetSlidersQueryHandler : IQueryHandler<GetSlidersQuery,List<SliderDto>>
+public class GetSlidersQueryHandler : IQueryHandler<GetSlidersQuery, List<SliderDto>>
 {
     private readonly BoundlessBookContext _context;
 
@@ -18,7 +18,7 @@ public class GetSlidersQueryHandler : IQueryHandler<GetSlidersQuery,List<SliderD
         var result = new List<SliderDto>();
         var sliders = await _context.Sliders.OrderByDescending(c => c.CreationDate).ToListAsync(cancellationToken);
 
-        if (sliders==null)
+        if (sliders == null)
         {
             return null;
         }
