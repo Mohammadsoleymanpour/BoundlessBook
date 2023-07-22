@@ -5,12 +5,12 @@ using BoundlessBook.Domain.ProductAggregate;
 
 namespace BoundlessBook.Query.Products.DTOs;
 
-public class ProductDto:BaseDto
+public class ProductDto : BaseDto
 {
     public string Title { get; set; }
     public string Description { get; set; }
     public string ImageName { get; set; }
-    public ProductCategoryDto Category { get; set; } 
+    public ProductCategoryDto Category { get; set; }
     public ProductCategoryDto SubCategory { get; set; }
     public ProductCategoryDto SecondarySubCategory { get; set; }
     public string Slug { get; set; }
@@ -48,7 +48,7 @@ public class ProductImageDto : BaseDto
 public class ProductSpecificationDto : BaseDto
 {
     public string Key { get; set; }
-    public string Value { get; set; } 
+    public string Value { get; set; }
 }
 
 public class ProductCategoryDto : BaseDto

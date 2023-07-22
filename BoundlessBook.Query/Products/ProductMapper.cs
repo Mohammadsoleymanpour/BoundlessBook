@@ -38,9 +38,9 @@ public static class ProductMapper
 
             Slug = product.Slug,
             Title = product.Title,
-            Category = new ProductCategoryDto(){Id = product.CategoryId},
-            SubCategory = new ProductCategoryDto(){Id = product.SubCategoryId},
-            SecondarySubCategory = new ProductCategoryDto(){Id = product.SecondarySubCategoryId}
+            Category = new ProductCategoryDto() { Id = product.CategoryId },
+            SubCategory = new ProductCategoryDto() { Id = product.SubCategoryId },
+            SecondarySubCategory = new ProductCategoryDto() { Id = product.SecondarySubCategoryId }
         };
     }
 
@@ -60,8 +60,8 @@ public static class ProductMapper
 
     public static async Task<ProductDto> SetCategories(this ProductDto product, BoundlessBookContext context)
     {
-        var category = await context.Categories.Where(c=>c.Id==product.Category.Id)
-            .Select(c=>new ProductCategoryDto()
+        var category = await context.Categories.Where(c => c.Id == product.Category.Id)
+            .Select(c => new ProductCategoryDto()
             {
                 Id = c.Id,
                 CreationDate = c.CreationDate,
@@ -71,7 +71,7 @@ public static class ProductMapper
                 Slug = c.Slug,
                 Title = c.Title,
             }).FirstOrDefaultAsync();
-       
+
         var subCategory = await context.Categories.Where(c => c.Id == product.SubCategory.Id)
             .Select(c => new ProductCategoryDto()
             {
@@ -96,22 +96,22 @@ public static class ProductMapper
                 Title = c.Title,
             }).FirstOrDefaultAsync();
 
-        if (category!=null)
+        if (category != null)
         {
             product.Category = category;
         }
 
-        if (subCategory!=null)
+        if (subCategory != null)
         {
             product.SubCategory = subCategory;
         }
 
-        if (secondSubCategory !=null)
+        if (secondSubCategory != null)
         {
             product.SecondarySubCategory = secondSubCategory;
         }
 
 
         return product;
-    } 
+    }
 }
