@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BoundlessBook.Query.Roles.GetList;
 
-public class GetRolesQueryHandler: IQueryHandler<GetRolesQuery,List<RoleDto>>
+public class GetRolesQueryHandler : IQueryHandler<GetRolesQuery, List<RoleDto>>
 {
     private readonly BoundlessBookContext _context;
 
