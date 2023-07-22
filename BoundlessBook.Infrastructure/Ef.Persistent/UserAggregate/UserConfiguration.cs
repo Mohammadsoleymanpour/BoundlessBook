@@ -76,8 +76,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             option.Property(b => b.PostalCode)
                 .IsRequired().HasMaxLength(20);
 
-            option.Property(b => b.PhoneNumber)
-                .IsRequired().HasMaxLength(11);
+            //option.OwnsOne(c => c.PhoneNumber, config =>
+            //{
+            //    config.Property(b => b.Value)
+            //        .HasColumnName("PhoneNumber")
+            //        .IsRequired().HasMaxLength(11);
+            //});
         });
 
         builder.OwnsMany(b => b.Wallets, option =>

@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Domain", "BoundlessBook.Domain\BoundlessBook.Domain.csproj", "{D6B460BF-73DF-432A-B2BD-EBA2769F5F79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Domain", "BoundlessBook.Domain\BoundlessBook.Domain.csproj", "{D6B460BF-73DF-432A-B2BD-EBA2769F5F79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Application", "BoundlessBook.Application\BoundlessBook.Application.csproj", "{65EC5427-43EB-4081-B989-C7813CD96E74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Application", "BoundlessBook.Application\BoundlessBook.Application.csproj", "{65EC5427-43EB-4081-B989-C7813CD96E74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Infrastructure", "BoundlessBook.Infrastructure\BoundlessBook.Infrastructure.csproj", "{D605196B-E765-4937-96B5-6E7877653668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Infrastructure", "BoundlessBook.Infrastructure\BoundlessBook.Infrastructure.csproj", "{D605196B-E765-4937-96B5-6E7877653668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Presentation.Facade", "BoundlessBook.Presentation.Facade\BoundlessBook.Presentation.Facade.csproj", "{3BA77290-52AA-45AC-8560-9F8933C362A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Presentation.Facade", "BoundlessBook.Presentation.Facade\BoundlessBook.Presentation.Facade.csproj", "{3BA77290-52AA-45AC-8560-9F8933C362A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Query", "BoundlessBook.Query\BoundlessBook.Query.csproj", "{E2CE0176-19DA-4ABC-BFB4-07941DA1D8F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Query", "BoundlessBook.Query\BoundlessBook.Query.csproj", "{E2CE0176-19DA-4ABC-BFB4-07941DA1D8F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Common", "BoundlessBook.Common\BoundlessBook.Common.csproj", "{D7C2ADE7-66A9-419C-BB90-5E78AA16BBA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoundlessBook.Common", "BoundlessBook.Common\BoundlessBook.Common.csproj", "{D7C2ADE7-66A9-419C-BB90-5E78AA16BBA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EndPoints", "EndPoints", "{BEEB20A7-B32B-4F53-9554-14216724CAD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Bootstrapper", "EndPoints\BoundlessBook.Bootstrapper\BoundlessBook.Bootstrapper.csproj", "{40F6A52F-B2AB-4C24-82A6-38E4A823CD54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundlessBook.Config", "BoundlessBook.Config\BoundlessBook.Config.csproj", "{001C3DFF-371D-404A-9C85-86DB8E4E9A09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +51,20 @@ Global
 		{D7C2ADE7-66A9-419C-BB90-5E78AA16BBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7C2ADE7-66A9-419C-BB90-5E78AA16BBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7C2ADE7-66A9-419C-BB90-5E78AA16BBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40F6A52F-B2AB-4C24-82A6-38E4A823CD54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40F6A52F-B2AB-4C24-82A6-38E4A823CD54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40F6A52F-B2AB-4C24-82A6-38E4A823CD54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40F6A52F-B2AB-4C24-82A6-38E4A823CD54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001C3DFF-371D-404A-9C85-86DB8E4E9A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001C3DFF-371D-404A-9C85-86DB8E4E9A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001C3DFF-371D-404A-9C85-86DB8E4E9A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001C3DFF-371D-404A-9C85-86DB8E4E9A09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40F6A52F-B2AB-4C24-82A6-38E4A823CD54} = {BEEB20A7-B32B-4F53-9554-14216724CAD6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {55C9B82A-C516-4FE3-A543-1BC73E83B04E}

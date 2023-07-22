@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BoundlessBook.Application\BoundlessBook.Application.csproj" />
+    <ProjectReference Include="..\BoundlessBook.Query\BoundlessBook.Query.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -10,22 +10,56 @@ public class OrderConfigurations : IEntityTypeConfiguration<Order>
     {
         builder.ToTable("Orders", "order");
 
-        builder.OwnsOne(c => c.ShippingMethod, option =>
+        builder.HasKey(b => b.Id);
+        builder.HasIndex(b => b.UserId);
+
+        builder.OwnsMany(b => b.OrderItems, option =>
         {
-            option.Property(c => c.Title)
-                .HasMaxLength(50);
+            option.ToTable("Items", "order");
+            option.HasKey(b => b.Id);
+            option.HasIndex(b => b.InventoryId);
+            option.HasIndex(b => b.OrderId);
         });
 
-        builder.OwnsMany(c => c.OrderItems, option =>
+        builder.OwnsOne(b => b.Address, option =>
         {
-            option.ToTable("OrderItems", "order");
-        });
-
-        builder.OwnsOne(c => c.Address, option =>
-        {
+            option.HasKey(b => b.Id);
             option.ToTable("Addresses", "order");
-            option.Property(c => c.City)
-                .HasMaxLength(50);
+
+            option.Property(b => b.Shire)
+                .IsRequired().HasMaxLength(100);
+
+            option.Property(b => b.City)
+                .IsRequired().HasMaxLength(100);
+
+            option.Property(b => b.Name)
+                .IsRequired().HasMaxLength(50);
+
+            option.Property(b => b.Family)
+                .IsRequired().HasMaxLength(50);
+
+            option.Property(b => b.PhoneNumber)
+                .IsRequired().HasMaxLength(12);
+
+            option.Property(b => b.NationalCode)
+                .IsRequired().HasMaxLength(10);
+
+            option.Property(b => b.PostalCode)
+                .IsRequired().HasMaxLength(20);
+        });
+
+        builder.OwnsOne(b => b.OrderDiscount, option =>
+        {
+            option.Property(b => b.DiscountTitle)
+                .IsRequired()
+                .HasMaxLength(100);
+        });
+
+        builder.OwnsOne(b => b.ShippingMethod, option =>
+        {
+            option.Property(b => b.Title)
+                .IsRequired(false)
+                .HasMaxLength(100);
         });
 
     }
