@@ -14,7 +14,6 @@
     <Folder Include="Orders\GetById\" />
     <Folder Include="Orders\DTOs\" />
     <Folder Include="Products\GetByFilter\" />
-    <Folder Include="Products\GetBySlug\" />
     <Folder Include="Products\DTOs\" />
   </ItemGroup>
 
