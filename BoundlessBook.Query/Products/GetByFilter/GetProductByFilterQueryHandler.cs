@@ -33,7 +33,7 @@ public class GetProductByFilterQueryHandler : IQueryHandler<GetProductByFilterQu
         {
             result = result.Where(c => c.Title.Contains(@params.Title));
         }
-
+         
         var skip = (@params.PageId - 1) * @params.Take;
 
         var model = new ProductFilterResult()
@@ -46,4 +46,4 @@ public class GetProductByFilterQueryHandler : IQueryHandler<GetProductByFilterQu
         model.GeneratePaging(result, @params.Take, @params.PageId);
         return model;
     }
-}
+}   
