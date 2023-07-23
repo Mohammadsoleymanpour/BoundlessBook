@@ -4,6 +4,7 @@ using BoundlessBook.Presentation.Facade.Orders;
 using BoundlessBook.Presentation.Facade.Products;
 using BoundlessBook.Presentation.Facade.Roles;
 using BoundlessBook.Presentation.Facade.Sellers;
+using BoundlessBook.Presentation.Facade.SiteEntities.Banners;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BoundlessBook.Presentation.Facade;
@@ -18,5 +19,6 @@ public static class FacadeDI
         services.AddTransient<IProductFacade, ProductFacade>();
         services.AddTransient<IRoleFacade, RoleFacade>();
         services.AddTransient<ISellerFacade, SellerFacade>();
+        services.AddTransient<IBannerFacade, BannerFacade>();
     }
 }
