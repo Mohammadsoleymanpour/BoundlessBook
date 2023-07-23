@@ -41,7 +41,7 @@ public class UserFilterResult : BaseFilter<UserFilterData,UserFilterParam>
 
 public class UserFilterParam : BaseFilterParam
 {
-    public Guid UserId { get; set; }
+    public Guid? UserId { get; set; }
     public string? Name { get; private set; }
     public string? Family { get; set; }
     public string? PhoneNumber { get; set; }
