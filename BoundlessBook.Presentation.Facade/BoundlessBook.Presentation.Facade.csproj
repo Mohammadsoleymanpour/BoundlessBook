@@ -11,4 +11,15 @@
     <ProjectReference Include="..\BoundlessBook.Query\BoundlessBook.Query.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\" />
+    <Folder Include="Comments\" />
+    <Folder Include="Users\" />
+    <Folder Include="SiteEntities\" />
+    <Folder Include="Sellers\" />
+    <Folder Include="Roles\" />
+    <Folder Include="Products\" />
+    <Folder Include="Orders\" />
+  </ItemGroup>
+
 </Project>
