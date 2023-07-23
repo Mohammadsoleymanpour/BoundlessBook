@@ -3,7 +3,7 @@ using BoundlessBook.Infrastructure.Ef.Persistent;
 using BoundlessBook.Query.Seller.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoundlessBook.Query.Seller.GetList;
+namespace BoundlessBook.Query.Seller.GetByFilter;
 
 public class GetSellersQueryHandler : IQueryHandler<GetSellersQuery, SellerFilterResult>
 {

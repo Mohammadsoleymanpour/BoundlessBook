@@ -3,6 +3,7 @@ using BoundlessBook.Presentation.Facade.Comments;
 using BoundlessBook.Presentation.Facade.Orders;
 using BoundlessBook.Presentation.Facade.Products;
 using BoundlessBook.Presentation.Facade.Roles;
+using BoundlessBook.Presentation.Facade.Sellers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BoundlessBook.Presentation.Facade;
@@ -16,5 +17,6 @@ public static class FacadeDI
         services.AddTransient<IOrderFacade, OrderFacade>();
         services.AddTransient<IProductFacade, ProductFacade>();
         services.AddTransient<IRoleFacade, RoleFacade>();
+        services.AddTransient<ISellerFacade, SellerFacade>();
     }
 }
