@@ -14,7 +14,6 @@
   <ItemGroup>
     <Folder Include="Comments\" />
     <Folder Include="SiteEntities\Sliders\" />
-    <Folder Include="Users\" />
     <Folder Include="Sellers\" />
     <Folder Include="Roles\" />
     <Folder Include="Products\" />
