@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\" />
     <Folder Include="Comments\" />
     <Folder Include="Users\" />
     <Folder Include="SiteEntities\" />
