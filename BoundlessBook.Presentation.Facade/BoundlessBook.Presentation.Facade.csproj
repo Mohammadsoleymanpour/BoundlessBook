@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Comments\" />
-    <Folder Include="SiteEntities\Banners\" />
+    <Folder Include="SiteEntities\Sliders\" />
     <Folder Include="Users\" />
     <Folder Include="Sellers\" />
     <Folder Include="Roles\" />
