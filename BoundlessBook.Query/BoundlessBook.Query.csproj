@@ -20,7 +20,7 @@
     <Folder Include="Roles\DTOs\" />
     <Folder Include="Seller\DTOs\" />
     <Folder Include="Seller\GetById\" />
-    <Folder Include="Seller\GetList\" />
+    <Folder Include="Seller\GetByFilter\" />
     <Folder Include="SiteEntities\Sliders\DTOs\" />
     <Folder Include="SiteEntities\Sliders\GetById\" />
     <Folder Include="Users\GetById\" />
