@@ -1,6 +1,7 @@
 ﻿using BoundlessBook.Application.Categories.AddChild;
 using BoundlessBook.Application.Categories.Create;
 using BoundlessBook.Application.Categories.Edit;
+using BoundlessBook.Application.Categories.Remove;
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Query.Categories.DTOs;
 using BoundlessBook.Query.Categories.GetById;
@@ -18,17 +19,22 @@ public class CategoryFacade : ICategoryFacade
     {
         _mediator = mediator;
     }
-    public async Task<OperationResult> AddChild(AddCategoryChildCommand command)
+    public async Task<OperationResult<Guid>> AddChild(AddCategoryChildCommand command)
     {
         return await _mediator.Send(command);
     }
 
-    public async Task<OperationResult> Create(CreateCategoryCommand command)
+    public async Task<OperationResult<Guid>> Create(CreateCategoryCommand command)
     {
         return await _mediator.Send(command);
     }
 
     public async Task<OperationResult> Edit(EditCategoryCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    public async Task<OperationResult> remove(RemoveCategoryCommand command)
     {
         return await _mediator.Send(command);
     }

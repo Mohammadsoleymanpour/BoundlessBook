@@ -1,4 +1,5 @@
 ﻿using BoundlessBook.Application.Categories;
+using BoundlessBook.Application.Categories.Create;
 using BoundlessBook.Application.Products;
 using BoundlessBook.Application.Roles.Create;
 using BoundlessBook.Application.Sellers;
@@ -23,7 +24,7 @@ namespace BoundlessBook.Config
         {
             InfrastructureDI.Init(service,connectionString);
 
-            service.AddMediatR(c=> c.RegisterServicesFromAssembly(typeof(Directories).Assembly) );
+            service.AddMediatR(c=> c.RegisterServicesFromAssembly(typeof(CreateCategoryCommandHandler).Assembly) );
 
             service.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(GetCategoryByIdQuery).Assembly));
 

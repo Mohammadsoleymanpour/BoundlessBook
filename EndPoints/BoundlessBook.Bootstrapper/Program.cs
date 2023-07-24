@@ -3,6 +3,7 @@ using BoundlessBook.Common.Common.Application.FileUtil.Interfaces;
 using BoundlessBook.Common.Common.Application.FileUtil.Services;
 using BoundlessBook.Config;
 using BoundlessBook.Infrastructure;
+using BoundlessBook.Presentation.Facade;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,9 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.RegisterDependency(connectionString);
-//InfrastructureDI.Init(builder.Services, connectionString);
+InfrastructureDI.Init(builder.Services, connectionString);
 CommonBootstrapper.Init(builder.Services);
+FacadeDI.Init(builder.Services);
 builder.Services.AddTransient<IFileService, FileService>();
 
 var app = builder.Build();
