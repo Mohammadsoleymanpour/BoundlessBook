@@ -15,7 +15,7 @@ public class GetCategoriesQueryHandler : IQueryHandler<GetCategoriesQuery, List<
     }
     public async Task<List<CategoryDto>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var categories = await _context.Categories.OrderByDescending(c => c.CreationDate).ToListAsync(cancellationToken);
+        var categories = await _context.Categories.Include(c=>c.Child).ThenInclude(c=>c.Child).Where(c=>c.ParentId==null).OrderByDescending(c => c.CreationDate).ToListAsync(cancellationToken);
         return categories.Map();
     }
 }

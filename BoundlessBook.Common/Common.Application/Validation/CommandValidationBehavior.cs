@@ -19,13 +19,36 @@ namespace BoundlessBook.Common.Common.Application.Validation
             _validators = validators;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        //public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        //{
+        //    var errors = _validators
+        //        .Select(v => v.Validate(request))
+        //        .SelectMany(result => result.Errors)
+        //        .Where(error => error != null)
+        //        .ToList();
+
+        //    if (errors.Any())
+        //    {
+        //        var errorBuilder = new StringBuilder();
+
+        //        foreach (var error in errors)
+        //        {
+        //            errorBuilder.AppendLine(error.ErrorMessage);
+        //        }
+
+        //        throw new InvalidCommandException(errorBuilder.ToString(), null);
+        //    }
+        //    var response = await next();
+        //    return response;
+        //}
+
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             var errors = _validators
-                .Select(v => v.Validate(request))
-                .SelectMany(result => result.Errors)
-                .Where(error => error != null)
-                .ToList();
+                    .Select(v => v.Validate(request))
+                    .SelectMany(result => result.Errors)
+                    .Where(error => error != null)
+                    .ToList();
 
             if (errors.Any())
             {
@@ -40,11 +63,6 @@ namespace BoundlessBook.Common.Common.Application.Validation
             }
             var response = await next();
             return response;
-        }
-
-        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
         }
     }
 }

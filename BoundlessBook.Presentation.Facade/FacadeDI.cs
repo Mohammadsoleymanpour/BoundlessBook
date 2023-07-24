@@ -14,7 +14,7 @@ namespace BoundlessBook.Presentation.Facade;
 
 public static class FacadeDI
 {
-    public static void Init(this IServiceCollection services)
+    public static void Init( IServiceCollection services)
     {
         services.AddTransient<ICategoryFacade, CategoryFacade>();
         services.AddTransient<ICommentFacade, CommentFacade>();

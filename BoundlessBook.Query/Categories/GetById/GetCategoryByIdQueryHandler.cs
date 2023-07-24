@@ -15,7 +15,7 @@ public class GetCategoryByIdQueryHandler:IQueryHandler<GetCategoryByIdQuery,Cate
     }
     public async Task<CategoryDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == request.CategoryId,cancellationToken);
+        var category = await _context.Categories.Include(c=>c.Child).ThenInclude(c=>c.Child).FirstOrDefaultAsync(c => c.Id == request.CategoryId,cancellationToken);
         return category.Map();
     }
 }

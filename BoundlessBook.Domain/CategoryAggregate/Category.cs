@@ -10,7 +10,7 @@ public class Category:AggregateRoot
 {
     public Category()
     {
-        
+        Child = new List<Category>();
     }
     public Category(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
     {
@@ -18,6 +18,7 @@ public class Category:AggregateRoot
         Title = title;
         Slug = slug.ToSlug();
         SeoData = seoData;
+        Child = new List<Category>();
     }
     public string Title { get; set; }
     public string Slug { get; set; }
@@ -32,12 +33,14 @@ public class Category:AggregateRoot
         SeoData = seoData;
     }
 
-    public void AddChild(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
+    public Guid AddChild(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
     {
-        Child.Add(new Category(title,slug,seoData,categoryService)
+       var child =  new Category(title,slug,seoData,categoryService)
         {
             ParentId = Id
-        });
+        };
+       Child.Add(child);
+       return child.Id;
     }
     public void Guard(string title, string slug,ICategoryDomainService categoryService)
     {

@@ -9,6 +9,7 @@ namespace BoundlessBook.Domain.CategoryAggregate
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
+        Task<bool> IsExistProduct(Guid categoryId);
 
     }
 }
