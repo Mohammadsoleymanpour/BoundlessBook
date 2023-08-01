@@ -51,7 +51,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
             var result = await _categoryFacade.AddChild(command);
 
             return result;
-        }
+        } 
 
         [HttpPut]
         public async Task<OperationResult> Edit(EditCategoryCommand command)
