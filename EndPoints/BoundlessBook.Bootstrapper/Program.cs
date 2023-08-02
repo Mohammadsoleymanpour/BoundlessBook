@@ -1,6 +1,7 @@
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Common.Common.Application.FileUtil.Interfaces;
 using BoundlessBook.Common.Common.Application.FileUtil.Services;
+using BoundlessBook.Common.Common.AspNetCore;
 using BoundlessBook.Config;
 using BoundlessBook.Infrastructure;
 using BoundlessBook.Presentation.Facade;
@@ -33,7 +34,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseApiCustomExceptionHandler();
 app.MapControllers();
 
 app.Run();
