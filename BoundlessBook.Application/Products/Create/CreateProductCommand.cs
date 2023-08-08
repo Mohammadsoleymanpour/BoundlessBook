@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace BoundlessBook.Application.Products.Create;
 
-public class CreateProductCommand : IBaseCommand
+public class CreateProductCommand : IBaseCommand<Guid>
 {
     public CreateProductCommand(string title, string description, IFormFile imageFile, Guid categoryId, Guid subCategoryId, Guid secondarySubCategoryId, string slug, SeoData seoData, Dictionary<string, string> productSpecifications)
     {
