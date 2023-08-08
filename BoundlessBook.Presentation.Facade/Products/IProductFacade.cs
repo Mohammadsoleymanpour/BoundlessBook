@@ -9,7 +9,7 @@ namespace BoundlessBook.Presentation.Facade.Products;
 
 public interface IProductFacade
 {
-    Task<OperationResult> Create(CreateProductCommand command);
+    Task<OperationResult<Guid>> Create(CreateProductCommand command);
     Task<OperationResult> Edit(EditProductCommand command);
     Task<OperationResult> AddImage(AddProductImageCommand command);
     Task<OperationResult> RemoveImage(RemoveProductImageCommand command);

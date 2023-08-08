@@ -20,7 +20,7 @@ public class ProductFacade : IProductFacade
     {
         _mediator = mediator;
     }
-    public async Task<OperationResult> Create(CreateProductCommand command)
+    public async Task<OperationResult<Guid>> Create(CreateProductCommand command)
     {
         return await _mediator.Send(command);
     }

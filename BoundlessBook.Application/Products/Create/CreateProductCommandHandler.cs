@@ -8,7 +8,7 @@ using FluentValidation;
 
 namespace BoundlessBook.Application.Products.Create;
 
-public class CreateProductCommandHandler:IBaseCommandHandler<CreateProductCommand>
+public class CreateProductCommandHandler:IBaseCommandHandler<CreateProductCommand,Guid>
 {
     private readonly IProductRepository _productRepository;
     private readonly IProductDomainService _productDomainService;
@@ -20,7 +20,7 @@ public class CreateProductCommandHandler:IBaseCommandHandler<CreateProductComman
         _productDomainService = productDomainService;
         _fileService = fileService;
     }
-    public async Task<OperationResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<Guid>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var imageName = "";
         try
@@ -31,7 +31,7 @@ public class CreateProductCommandHandler:IBaseCommandHandler<CreateProductComman
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return OperationResult.Error(e.Message);
+            return OperationResult<Guid>.Error(e.Message);
         }
 
         var product = new Product(request.Title, request.Description, imageName, request.CategoryId,
@@ -46,7 +46,7 @@ public class CreateProductCommandHandler:IBaseCommandHandler<CreateProductComman
         });
         product.AddSpecification(specifications);
         await _productRepository.Save();
-        return OperationResult.Success();
+        return OperationResult<Guid>.Success(product.Id);
 
     }
 }
