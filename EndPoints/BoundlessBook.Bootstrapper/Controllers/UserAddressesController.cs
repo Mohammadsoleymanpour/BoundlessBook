@@ -33,8 +33,10 @@ namespace BoundlessBook.Bootstrapper.Controllers
         }
 
         [HttpPut]
-        public async Task<OperationResult> EditAddress(EditAddressCommand command)
+        public async Task<OperationResult> EditAddress(EditUserAddressViewModel viewModel)
         {
+            var command = _mapper.Map<EditAddressCommand>(viewModel);
+            command.UserId = User.GetUserId();
             return await _userAddressFacade.EditAddress(command);
         }
 
