@@ -1,4 +1,5 @@
 ﻿using BoundlessBook.Application.Sellers.Create;
+using BoundlessBook.Application.SiteEntities.Slider.Create;
 using BoundlessBook.Application.SiteEntities.Slider.Edit;
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Query.SiteEntities.Sliders.DTOs;
@@ -16,7 +17,7 @@ public class SliderFacade : ISliderFacade
     {
         _mediator = mediator;
     }
-    public async Task<OperationResult> Create(CreateSellerCommand command)
+    public async Task<OperationResult> Create(CreateSliderCommand command)
     {
         return await _mediator.Send(command);
     }
