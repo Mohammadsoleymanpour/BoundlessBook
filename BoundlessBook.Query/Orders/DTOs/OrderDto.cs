@@ -51,10 +51,10 @@ public class OrderFilterData : BaseDto
 
 public class OrderFilterParam : BaseFilterParam
 {
-    public Guid UserId { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public OrderStatus OrderStatus { get; set; }
+    public Guid? UserId { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
+    public OrderStatus? OrderStatus { get; set; }
 }
 
 public class OrderFilterResult : BaseFilter<OrderFilterData, OrderFilterParam>
