@@ -6,6 +6,7 @@ using BoundlessBook.Bootstrapper.ViewModels.UserAddress;
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Common.Common.AspNetCore;
 using BoundlessBook.Presentation.Facade.Users.UserAddress;
+using BoundlessBook.Query.Users.Addresses.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,18 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             _userAddressFacade = userAddressFacade;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<List<AddressDto>> GetUserAddressByUserId()
+        {
+            return await _userAddressFacade.GetAddressesUserId(User.GetUserId());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<AddressDto> GetUserAddressById(Guid id)
+        {
+            return await _userAddressFacade.GetAddressById(id);
         }
 
         [HttpPost]
