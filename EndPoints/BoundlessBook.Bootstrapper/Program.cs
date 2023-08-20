@@ -1,3 +1,5 @@
+using BoundlessBook.Bootstrapper.Infrastructure;
+using BoundlessBook.Bootstrapper.Infrastructure.JwtUtils;
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Common.Common.Application.FileUtil.Interfaces;
 using BoundlessBook.Common.Common.Application.FileUtil.Services;
@@ -20,7 +22,9 @@ builder.Services.RegisterDependency(connectionString);
 InfrastructureDI.Init(builder.Services, connectionString);
 CommonBootstrapper.Init(builder.Services);
 FacadeDI.Init(builder.Services);
+DependencyInjection.RegisterDpendency(builder.Services);
 builder.Services.AddTransient<IFileService, FileService>();
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 

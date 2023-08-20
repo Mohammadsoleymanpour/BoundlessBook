@@ -17,7 +17,8 @@ public static class UserMapper
             Id = user.Id,
             Email = user.Email,
             Family = user.Family,
-            Gender = user.Gender,
+            IsActive = user.IsActive,
+                Gender = user.Gender,
             UserRoles = user.UserRoles.Select(c=>new UserRoleDto()
             {
                 RoleId = c.RoleId,
