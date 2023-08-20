@@ -19,4 +19,5 @@ public class DapperContext
     public string OrderItems = "[order].OrderItems";
     public string Sellers = "[seller].Sellers";
     public string Products = "[product].Products";
+    public string UserAddresses = "[user].Addresses";
 }

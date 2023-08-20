@@ -11,11 +11,11 @@ public class User : AggregateRoot
 {
     public User()
     {
-        
+
     }
-    public User(string name, string family, string phoneNumber, string email, string password, Gender gender,IUserDomainService userDomainService)
+    public User(string name, string family, string phoneNumber, string email, string password, Gender gender, IUserDomainService userDomainService)
     {
-        Guard(phoneNumber,email,userDomainService);
+        Guard(phoneNumber, email, userDomainService);
         Name = name;
         Family = family;
         PhoneNumber = phoneNumber;
@@ -23,37 +23,39 @@ public class User : AggregateRoot
         Password = password;
         Gender = gender;
         AvatarName = "avatar.png";
+        IsActive = true;
     }
     public string Name { get; private set; }
     public string Family { get; set; }
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+    public bool IsActive { get; set; }
     public string AvatarName { get; set; }
     public Gender Gender { get; set; }
     public List<UserRole> UserRoles { get; set; }
     public List<Wallet> Wallets { get; set; }
     public List<UserAddress> UserAddresses { get; set; }
 
-    public static User RegisterUser(string phoneNumber, string password,IUserDomainService userDomainService)
+    public static User RegisterUser(string phoneNumber, string password, IUserDomainService userDomainService)
     {
         return new User("", "", phoneNumber, "", password, Gender.None, userDomainService);
     }
 
-    public void EditUser(string name, string family, string phoneNumber, string email ,Gender gender,IUserDomainService userDomainService)
+    public void EditUser(string name, string family, string phoneNumber, string email, Gender gender, IUserDomainService userDomainService)
     {
-        Guard(phoneNumber,email,userDomainService);
+        Guard(phoneNumber, email, userDomainService);
         Name = name;
         Family = family;
         PhoneNumber = phoneNumber;
         Email = email;
         Gender = gender;
-       
+
     }
 
     public void SetAvatar(string avatar)
     {
-        NullOrEmptyDomainException.CheckString(avatar,nameof(avatar));
+        NullOrEmptyDomainException.CheckString(avatar, nameof(avatar));
         AvatarName = avatar;
     }
     public void AddAddress(UserAddress address)
@@ -93,30 +95,35 @@ public class User : AggregateRoot
     public void AddUserRoles(List<UserRole> roles)
     {
         UserRoles.Clear();
-        UserRoles.ForEach(c=>c.UserId=Id);
+        UserRoles.ForEach(c => c.UserId = Id);
         UserRoles.AddRange(roles);
     }
 
     public void Guard(string phoneNumber, string email, IUserDomainService userDomainService)
     {
         NullOrEmptyDomainException.CheckString(phoneNumber, nameof(phoneNumber));
-        NullOrEmptyDomainException.CheckString(email, nameof(email));
 
         if (phoneNumber.Length != 11)
         {
             throw new InvalidDomainException("شماره موبایل معتبر نیست");
         }
 
-        if (!EmailValidation.IsValidEmail(email))
+        if (string.IsNullOrWhiteSpace(email) is false)
         {
-            throw new InvalidDomainException("ایمیل معتبر نیست");
+            if (!EmailValidation.IsValidEmail(email))
+            {
+                throw new InvalidDomainException("ایمیل معتبر نیست");
+            }
         }
 
-        if (email != Email)
+        if (string.IsNullOrWhiteSpace(email) is false)
         {
-            if (userDomainService.IsEmailExist(email))
+            if (email != Email)
             {
-                throw new InvalidDomainException("ایمیل وارد شده تکراری است");
+                if (userDomainService.IsEmailExist(email))
+                {
+                    throw new InvalidDomainException("ایمیل وارد شده تکراری است");
+                }
             }
         }
 

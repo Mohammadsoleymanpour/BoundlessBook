@@ -25,10 +25,10 @@ public class GetOrderByFilterQueryHandler:IQueryHandler<GetOrderByFilterQuery,Or
             result = result.Where(r => r.UserId == @params.UserId);
 
         if (@params.StartDate != null)
-            result = result.Where(r => r.CreationDate.Date >= @params.StartDate.Date);
+            result = result.Where(r => r.CreationDate.Date >= @params.StartDate);
 
         if (@params.EndDate != null)
-            result = result.Where(r => r.CreationDate.Date <= @params.EndDate.Date);
+            result = result.Where(r => r.CreationDate.Date <= @params.EndDate);
 
         var skip = (@params.PageId - 1) * @params.Take;
         var model = new OrderFilterResult()
