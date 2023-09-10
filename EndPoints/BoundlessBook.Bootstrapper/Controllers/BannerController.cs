@@ -3,12 +3,14 @@ using BoundlessBook.Application.SiteEntities.Banner.Edit;
 using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Presentation.Facade.SiteEntities.Banners;
 using BoundlessBook.Query.SiteEntities.Banners.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class BannerController : ControllerBase
     {

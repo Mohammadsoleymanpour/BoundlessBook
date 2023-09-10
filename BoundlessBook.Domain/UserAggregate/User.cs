@@ -1,4 +1,5 @@
 ﻿using System.Security.AccessControl;
+using BoundlessBook.Application.Users;
 using BoundlessBook.Common.Common.Domain;
 using BoundlessBook.Common.Common.Domain.Exceptions;
 using BoundlessBook.Domain.UserAggregate.Enums;
@@ -24,6 +25,10 @@ public class User : AggregateRoot
         Gender = gender;
         AvatarName = "avatar.png";
         IsActive = true;
+        UserRoles = new List<UserRole>();
+        Wallets = new List<Wallet>();
+        UserAddresses = new List<UserAddress>();
+        UserTokens = new List<UserToken>();
     }
     public string Name { get; private set; }
     public string Family { get; set; }
@@ -33,9 +38,10 @@ public class User : AggregateRoot
     public bool IsActive { get; set; }
     public string AvatarName { get; set; }
     public Gender Gender { get; set; }
-    public List<UserRole> UserRoles { get; set; }
-    public List<Wallet> Wallets { get; set; }
-    public List<UserAddress> UserAddresses { get; set; }
+    public List<UserRole> UserRoles { get;private set; }
+    public List<Wallet> Wallets { get; private set; }
+    public List<UserAddress> UserAddresses { get; private set; }
+    public List<UserToken> UserTokens { get; private set; }
 
     public static User RegisterUser(string phoneNumber, string password, IUserDomainService userDomainService)
     {
@@ -97,6 +103,20 @@ public class User : AggregateRoot
         UserRoles.Clear();
         UserRoles.ForEach(c => c.UserId = Id);
         UserRoles.AddRange(roles);
+    }
+
+    public void AddUserToken( string hashJwtToken, string hashRefreshToken, DateTime tokenExpireDate, DateTime refreshTokenExpireDate, string device)
+    {
+        var activeTokenCount = UserTokens.Count(c => c.RefreshTokenExpireDate > DateTime.Now);
+        if (activeTokenCount ==3)
+        {
+            throw new InvalidDomainException(" کاربر گرامی شما قادر نیستید با بیش از چهار دستگاه در سایت ما لاگین کنید");
+        }
+
+        var token = new UserToken(Id,hashJwtToken,hashRefreshToken,tokenExpireDate,refreshTokenExpireDate,device);
+
+
+
     }
 
     public void Guard(string phoneNumber, string email, IUserDomainService userDomainService)
