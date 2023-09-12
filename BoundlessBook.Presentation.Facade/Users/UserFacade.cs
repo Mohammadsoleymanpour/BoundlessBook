@@ -1,4 +1,5 @@
-﻿using BoundlessBook.Application.Users.ChargeWallet;
+﻿using BoundlessBook.Application.Users.AddToken;
+using BoundlessBook.Application.Users.ChargeWallet;
 using BoundlessBook.Application.Users.Create;
 using BoundlessBook.Application.Users.Edit;
 using BoundlessBook.Application.Users.Register;
@@ -35,6 +36,11 @@ public class UserFacade : IUserFacade
     }
 
     public async Task<OperationResult> ChargeWallet(ChargeUserWalletCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    public async Task<OperationResult> AddToken(AddUserTokenCommand command)
     {
         return await _mediator.Send(command);
     }

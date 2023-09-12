@@ -1,4 +1,5 @@
-﻿using BoundlessBook.Application.Users.ChargeWallet;
+﻿using BoundlessBook.Application.Users.AddToken;
+using BoundlessBook.Application.Users.ChargeWallet;
 using BoundlessBook.Application.Users.Create;
 using BoundlessBook.Application.Users.Edit;
 using BoundlessBook.Application.Users.Register;
@@ -13,7 +14,7 @@ public interface IUserFacade
     Task<OperationResult> Edit(EditUserCommand  command);
     Task<OperationResult> Register(RegisterCommand command);
     Task<OperationResult> ChargeWallet(ChargeUserWalletCommand  command);
-
+    Task<OperationResult> AddToken(AddUserTokenCommand  command);
     Task<UserFilterResult> GetUserByFilter(UserFilterParam  filter);
     Task<UserDto> GetUserById(Guid  id);
     Task<UserDto> GetUserByPhoneNumber(string phoneNumber);

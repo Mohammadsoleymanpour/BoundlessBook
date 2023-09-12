@@ -35,23 +35,23 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
 
 
-        //builder.OwnsMany(b => b.Tokens, option =>
-        //{
-        //    option.ToTable("Tokens", "user");
-        //    option.HasKey(b => b.Id);
+        builder.OwnsMany(b => b.UserTokens, option =>
+        {
+            option.ToTable("Tokens", "user");
+            option.HasKey(b => b.Id);
 
-        //    option.Property(b => b.HashJwtToken)
-        //        .IsRequired()
-        //        .HasMaxLength(250);
+            option.Property(b => b.HashJwtToken)
+                .IsRequired()
+                .HasMaxLength(250);
 
-        //    option.Property(b => b.HashRefreshToken)
-        //        .IsRequired()
-        //        .HasMaxLength(250);
+            option.Property(b => b.HashRefreshToken)
+                .IsRequired()
+                .HasMaxLength(250);
 
-        //    option.Property(b => b.Device)
-        //        .IsRequired()
-        //        .HasMaxLength(100);
-        //});
+            option.Property(b => b.Device)
+                .IsRequired()
+                .HasMaxLength(100);
+        });
         builder.OwnsMany(b => b.UserAddresses, option =>
         {
             option.HasIndex(b => b.UserId);

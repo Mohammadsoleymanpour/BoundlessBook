@@ -4,6 +4,7 @@ using BoundlessBook.Infrastructure.Ef.Persistent;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoundlessBook.Infrastructure.Migrations
 {
     [DbContext(typeof(BoundlessBookContext))]
-    partial class BoundlessBookContextModelSnapshot : ModelSnapshot
+    [Migration("20230910074315_mig_Save_UserToken_InDatabase")]
+    partial class mig_Save_UserToken_InDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
