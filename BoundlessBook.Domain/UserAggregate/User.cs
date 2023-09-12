@@ -115,8 +115,7 @@ public class User : AggregateRoot
 
         var token = new UserToken(Id,hashJwtToken,hashRefreshToken,tokenExpireDate,refreshTokenExpireDate,device);
 
-
-
+        UserTokens.Add(token);
     }
 
     public void Guard(string phoneNumber, string email, IUserDomainService userDomainService)
