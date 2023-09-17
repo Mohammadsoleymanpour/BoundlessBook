@@ -27,7 +27,15 @@ public static class AddJwtAuthenticationConfig
                 ValidateAudience = true
             };
             option.SaveToken = true;
-            
+            option.Events = new JwtBearerEvents()
+            {
+                OnTokenValidated = async context =>
+                {
+                    var customValidate = context.HttpContext.RequestServices.GetRequiredService<CustomJwtValidate>();
+                    await customValidate.Validate(context);
+                }
+            };
+
         });
     }
 }
