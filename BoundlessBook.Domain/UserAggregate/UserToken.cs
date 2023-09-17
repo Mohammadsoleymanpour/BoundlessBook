@@ -5,6 +5,10 @@ namespace BoundlessBook.Application.Users;
 
 public class UserToken : BaseEntity
 {
+    public UserToken()
+    {
+
+    }
     public UserToken(Guid userId, string hashJwtToken, string hashRefreshToken, DateTime tokenExpireDate, DateTime refreshTokenExpireDate, string device)
     {
         UserId = userId;

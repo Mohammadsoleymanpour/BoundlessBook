@@ -118,6 +118,17 @@ public class User : AggregateRoot
         UserTokens.Add(token);
     }
 
+    public void RemoveUserToken(Guid tokenId)
+    {
+        var userToken = UserTokens.FirstOrDefault(c => c.Id == tokenId);
+        if (userToken == null)
+        {
+            throw new InvalidDomainException("توکنی یافت نشد");
+        }
+
+        UserTokens.Remove(userToken);
+    }
+
     public void Guard(string phoneNumber, string email, IUserDomainService userDomainService)
     {
         NullOrEmptyDomainException.CheckString(phoneNumber, nameof(phoneNumber));

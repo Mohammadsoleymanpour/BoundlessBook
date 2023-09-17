@@ -33,6 +33,7 @@
     <Folder Include="Users\DeleteAddress\" />
     <Folder Include="Users\ChargeWallet\" />
     <Folder Include="Users\AddToken\" />
+    <Folder Include="Users\RemoveToken\" />
     <Folder Include="Users\Register\" />
   </ItemGroup>
 

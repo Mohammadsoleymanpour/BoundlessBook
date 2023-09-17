@@ -3,11 +3,14 @@ using BoundlessBook.Application.Users.ChargeWallet;
 using BoundlessBook.Application.Users.Create;
 using BoundlessBook.Application.Users.Edit;
 using BoundlessBook.Application.Users.Register;
+using BoundlessBook.Application.Users.RemoveToken;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Common.Common.Application.SecurityUtil;
 using BoundlessBook.Query.Users.DTOs;
 using BoundlessBook.Query.Users.GetByFilter;
 using BoundlessBook.Query.Users.GetById;
 using BoundlessBook.Query.Users.GetByPhoneNumber;
+using BoundlessBook.Query.Users.UserTokens;
 using MediatR;
 
 namespace BoundlessBook.Presentation.Facade.Users;
@@ -43,6 +46,17 @@ public class UserFacade : IUserFacade
     public async Task<OperationResult> AddToken(AddUserTokenCommand command)
     {
         return await _mediator.Send(command);
+    }
+
+    public async Task<OperationResult> RemoveToken(RemoveUserTokenCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    public async Task<UserTokenDto> GetUserTokenByRefreshToken(string refreshToken)
+    {
+        string hashRefreshToken = Sha256Hasher.Hash(refreshToken);
+        return await _mediator.Send(new GetUserTokenByRefreshTokenQuery(hashRefreshToken));
     }
 
     public async Task<UserFilterResult> GetUserByFilter(UserFilterParam filter)

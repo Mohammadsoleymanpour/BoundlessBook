@@ -1,5 +1,6 @@
 ﻿using BoundlessBook.Application.Users.AddToken;
 using BoundlessBook.Application.Users.Register;
+using BoundlessBook.Application.Users.RemoveToken;
 using BoundlessBook.Bootstrapper.Infrastructure.JwtUtils;
 using BoundlessBook.Bootstrapper.ViewModels.Auth;
 using BoundlessBook.Common.Common.Application;
@@ -47,16 +48,8 @@ namespace BoundlessBook.Bootstrapper.Controllers
                 return OperationResult<LoginResultViewModel>.Error("حساب شما فعال نمیباشد ");
             }
 
-            string token = JwtTokenBuilder.BuildToken(user, _configuration);
-            string refreshToken = Guid.NewGuid().ToString();
 
-            var addTokenResponse = await AddToken(user, token, refreshToken);
-            if (addTokenResponse.Status != OperationResultStatus.Success)
-            {
-                return OperationResult<LoginResultViewModel>.Error();
-            }
-
-            return OperationResult<LoginResultViewModel>.Success(new LoginResultViewModel() { Token = token, RefreshToken = refreshToken });
+            return await AddToken(user);
         }
 
         [HttpPost("Register")]
@@ -71,10 +64,38 @@ namespace BoundlessBook.Bootstrapper.Controllers
             return await _userFacade.Register(command);
         }
 
-        private async Task<OperationResult> AddToken(UserDto user, string token, string refreshToken)
+        [HttpPost("RefreshToken")]
+        public async Task<OperationResult<LoginResultViewModel>> RefreshToken(string refreshToken)
+        {
+            var result = await _userFacade.GetUserTokenByRefreshToken(refreshToken);
+            if (result == null)
+            {
+                return OperationResult<LoginResultViewModel>.NotFound();
+            }
+
+            if (result.TokenExpireDate> DateTime.Now)
+            {
+                return OperationResult<LoginResultViewModel>.Error("توکن هنوز منقضی نشده است");
+            }
+
+            if (result.RefreshTokenExpireDate < DateTime.Now)
+            {
+                return OperationResult<LoginResultViewModel>.Error("از زمان رفرش توکن شما گذشته است");
+            }
+
+            var currentUser = await _userFacade.GetUserById(result.UserId);
+            await _userFacade.RemoveToken(new RemoveUserTokenCommand(result.UserId, result.Id));
+            var loginResult = await AddToken(currentUser);
+
+            return loginResult;
+        }
+
+        private async Task<OperationResult<LoginResultViewModel>> AddToken(UserDto user)
         {
             try
             {
+                string token = JwtTokenBuilder.BuildToken(user, _configuration);
+                string refreshToken = Guid.NewGuid().ToString();
                 var uaParser = Parser.GetDefault();
 
                 var info = uaParser.Parse(HttpContext.Request.Headers["User-Agent"]);
@@ -86,7 +107,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
                         Sha256Hasher.Hash(refreshToken), DateTime.Now.AddDays(7)
                         , DateTime.Now.AddDays(8), device));
 
-                return addTokenResponse;
+                return OperationResult<LoginResultViewModel>.Success(new LoginResultViewModel(){Token = token ,RefreshToken = refreshToken});
             }
             catch (Exception e)
             {
