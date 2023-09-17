@@ -11,6 +11,8 @@ using BoundlessBook.Query.Users.GetByFilter;
 using BoundlessBook.Query.Users.GetById;
 using BoundlessBook.Query.Users.GetByPhoneNumber;
 using BoundlessBook.Query.Users.UserTokens;
+using BoundlessBook.Query.Users.UserTokens.GetByRefreshToken;
+using BoundlessBook.Query.Users.UserTokens.GetByToken;
 using MediatR;
 
 namespace BoundlessBook.Presentation.Facade.Users;
@@ -51,6 +53,12 @@ public class UserFacade : IUserFacade
     public async Task<OperationResult> RemoveToken(RemoveUserTokenCommand command)
     {
         return await _mediator.Send(command);
+    }
+
+    public async Task<UserTokenDto> GetUserTokenByToken(string token)
+    {
+        string hashToken = Sha256Hasher.Hash(token);
+        return await _mediator.Send(new GetUserTokenByTokenQuery(hashToken));
     }
 
     public async Task<UserTokenDto> GetUserTokenByRefreshToken(string refreshToken)
