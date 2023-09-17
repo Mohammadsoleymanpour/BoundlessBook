@@ -7,6 +7,8 @@ using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Common.Common.Application.SecurityUtil;
 using BoundlessBook.Presentation.Facade.Users;
 using BoundlessBook.Query.Users.DTOs;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UAParser;
@@ -88,6 +90,19 @@ namespace BoundlessBook.Bootstrapper.Controllers
             var loginResult = await AddToken(currentUser);
 
             return loginResult;
+        }
+        [Authorize]
+        [HttpPost("Logout")]
+        public async Task<OperationResult> Logout()
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+            if (token == null)
+            {
+                return OperationResult.Error();
+            }
+
+            var userToken = await _userFacade.GetUserTokenByToken(token);
+            return await _userFacade.RemoveToken(new RemoveUserTokenCommand(userToken.UserId, userToken.Id));
         }
 
         private async Task<OperationResult<LoginResultViewModel>> AddToken(UserDto user)

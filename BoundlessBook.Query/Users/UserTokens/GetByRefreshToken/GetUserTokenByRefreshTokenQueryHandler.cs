@@ -3,7 +3,7 @@ using BoundlessBook.Infrastructure.Dapper.Persistent;
 using BoundlessBook.Query.Users.DTOs;
 using Dapper;
 
-namespace BoundlessBook.Query.Users.UserTokens;
+namespace BoundlessBook.Query.Users.UserTokens.GetByRefreshToken;
 
 public class GetUserTokenByRefreshTokenQueryHandler : IQueryHandler<GetUserTokenByRefreshTokenQuery, UserTokenDto>
 {

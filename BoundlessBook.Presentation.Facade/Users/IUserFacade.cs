@@ -18,6 +18,7 @@ public interface IUserFacade
     Task<OperationResult> AddToken(AddUserTokenCommand  command);
     Task<OperationResult> RemoveToken(RemoveUserTokenCommand  command);
 
+    Task<UserTokenDto> GetUserTokenByToken(string  token);
     Task<UserTokenDto> GetUserTokenByRefreshToken (string refreshToken);
     Task<UserFilterResult> GetUserByFilter(UserFilterParam  filter);
     Task<UserDto> GetUserById(Guid  id);
