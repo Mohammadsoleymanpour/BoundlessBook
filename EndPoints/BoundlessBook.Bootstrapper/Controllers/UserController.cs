@@ -12,17 +12,17 @@ namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserControllerController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserFacade _userFacade;
 
-        public UserControllerController(IUserFacade userFacade)
+        public UserController(IUserFacade userFacade)
         {
             _userFacade = userFacade;
         }
 
         [HttpGet]
-        public async Task<UserFilterResult> GetUserByFilter(UserFilterParam filterParam)
+        public async Task<UserFilterResult> GetUserByFilter([FromQuery]UserFilterParam filterParam)
         {
             return await _userFacade.GetUserByFilter(filterParam);
         }

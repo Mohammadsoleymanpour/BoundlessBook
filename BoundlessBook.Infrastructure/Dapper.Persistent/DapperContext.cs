@@ -12,6 +12,7 @@ public class DapperContext
         _connectionString = connectionString;
     }
 
+
     public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
 
@@ -20,4 +21,5 @@ public class DapperContext
     public string Sellers = "[seller].Sellers";
     public string Products = "[product].Products";
     public string UserAddresses = "[user].Addresses";
+    public string UserTokens => "[user].Tokens";
 }
