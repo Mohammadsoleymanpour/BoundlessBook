@@ -15,7 +15,7 @@ public class CustomJwtValidate
     public async Task Validate(TokenValidatedContext context)
     {
         var userId = context.Principal.GetUserId();
-        var jwtToken = context.Request.Headers["Authorization"].ToString().Replace("Bearer", "");
+        var jwtToken = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
         var userToken = await _userFacade.GetUserTokenByToken(jwtToken);
         if (userToken == null)
         {
