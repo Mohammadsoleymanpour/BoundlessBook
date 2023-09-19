@@ -21,7 +21,7 @@ public class GetRoleByIdQueryHandler : IQueryHandler<GetRoleByIdQuery, RoleDto>
             IsDelete = c.IsDelete,
             Id = c.Id,
             CreationDate = c.CreationDate,
-            RolePermissions = c.RolePermissions,
+            RolePermissions = c.RolePermissions.Select(c=>c.Permission).ToList(),
             Title = c.Title,
         }).FirstOrDefaultAsync(cancellationToken);
 

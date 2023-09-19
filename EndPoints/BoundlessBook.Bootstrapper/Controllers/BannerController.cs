@@ -1,6 +1,8 @@
 ﻿using BoundlessBook.Application.SiteEntities.Banner.Create;
 using BoundlessBook.Application.SiteEntities.Banner.Edit;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.SiteEntities.Banners;
 using BoundlessBook.Query.SiteEntities.Banners.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -11,6 +13,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
+    [PermissionChecker(Permission.AdminPanel)]
     [ApiController]
     public class BannerController : ControllerBase
     {
