@@ -7,12 +7,14 @@ using BoundlessBook.Common.Common.Application;
 using BoundlessBook.Common.Common.AspNetCore;
 using BoundlessBook.Presentation.Facade.Users.UserAddress;
 using BoundlessBook.Query.Users.Addresses.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class UserAddressesController : ControllerBase
     {

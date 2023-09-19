@@ -1,6 +1,8 @@
 ﻿using BoundlessBook.Application.Roles.Create;
 using BoundlessBook.Application.Roles.Edit;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Roles;
 using BoundlessBook.Query.Roles.DTOs;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [PermissionChecker(Permission.Role_Management)]
     [ApiController]
     public class RolesController : ControllerBase
     {

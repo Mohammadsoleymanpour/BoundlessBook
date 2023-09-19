@@ -2,14 +2,18 @@
 using BoundlessBook.Application.Categories.Create;
 using BoundlessBook.Application.Categories.Edit;
 using BoundlessBook.Application.Categories.Remove;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Categories;
 using BoundlessBook.Query.Categories.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [PermissionChecker(Permission.Category_Management)]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -19,12 +23,13 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             _categoryFacade = categoryFacade;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<List<CategoryDto>> Get()
         {
             return await _categoryFacade.GetAll();
         }
-
+        [AllowAnonymous]
         [HttpGet("/{id}")]
         public async Task<CategoryDto> Get(Guid id)
         {

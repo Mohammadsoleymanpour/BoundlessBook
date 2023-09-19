@@ -2,7 +2,9 @@
 using BoundlessBook.Application.Users.Create;
 using BoundlessBook.Application.Users.Edit;
 using BoundlessBook.Application.Users.Register;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Users;
 using BoundlessBook.Query.Users.DTOs;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [PermissionChecker(Permission.User_Management)]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -49,12 +52,6 @@ namespace BoundlessBook.Bootstrapper.Controllers
         public async Task<OperationResult> EditUser(EditUserCommand command)
         {
             return await _userFacade.Edit(command);
-        }
-
-        [HttpPost("Register")]
-        public async Task<OperationResult> RegisterUser(RegisterCommand command)
-        {
-            return await _userFacade.Register(command);
         }
 
         [HttpPost("ChargeWallet")]

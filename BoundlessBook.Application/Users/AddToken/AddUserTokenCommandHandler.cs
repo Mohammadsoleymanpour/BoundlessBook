@@ -8,7 +8,7 @@ public class AddUserTokenCommandHandler : IBaseCommandHandler<AddUserTokenComman
     private readonly IUserRepository _userRepository;
 
     public AddUserTokenCommandHandler(IUserRepository userRepository)
-    {
+    { 
         _userRepository = userRepository;
     }
     public async Task<OperationResult> Handle(AddUserTokenCommand request, CancellationToken cancellationToken)

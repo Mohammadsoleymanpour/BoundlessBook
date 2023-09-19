@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\JwtUtils\" />
+    <Folder Include="Infrastructure\Security\" />
     <Folder Include="ViewModels\Auth\" />
   </ItemGroup>
 

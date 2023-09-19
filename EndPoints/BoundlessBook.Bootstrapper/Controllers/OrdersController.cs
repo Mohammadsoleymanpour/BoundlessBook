@@ -3,15 +3,19 @@ using BoundlessBook.Application.Orders.ChangeCount.DecreaseCount;
 using BoundlessBook.Application.Orders.ChangeCount.IncreaseCount;
 using BoundlessBook.Application.Orders.CheckOut;
 using BoundlessBook.Application.Orders.RemoveItem;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Orders;
 using BoundlessBook.Query.Orders.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class OrdersController : ControllerBase
     {
@@ -22,6 +26,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
             _orderFacade = orderFacade;
         }
 
+        [PermissionChecker(Permission.Order_Managment)]
         [HttpGet]
         public async Task<OrderFilterResult> GetOrders(OrderFilterParam orderFilterParam)
         {
