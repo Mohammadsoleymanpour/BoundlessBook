@@ -2,15 +2,19 @@
 using BoundlessBook.Application.Products.Create;
 using BoundlessBook.Application.Products.Edit;
 using BoundlessBook.Application.Products.RemoveImage;
+using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Products;
 using BoundlessBook.Query.Products.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
+    [PermissionChecker(Permission.Product_Menagement)]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -21,7 +25,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             _productFacade = productFacade;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ProductFilterResult> GetProduct([FromQuery]ProductFilterParams filterParams)
         {
@@ -33,7 +37,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             return await _productFacade.GetById(id);
         }
-
+        [AllowAnonymous]
         [HttpGet("GetBySlug/{slug}")]
         public async Task<ProductDto> GetProductBySlug(string slug)
         {

@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BoundlessBook.Bootstrapper.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
-    [PermissionChecker(Permission.AdminPanel)]
+    [PermissionChecker(Permission.CRUD_Banner)]
     [ApiController]
     public class BannerController : ControllerBase
     {
@@ -23,7 +22,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             _bannerFacade = bannerFacade;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<List<BannerDto>> GetBanners()
         {

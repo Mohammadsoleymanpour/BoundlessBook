@@ -24,6 +24,11 @@ public class PermissionChecker : AuthorizeAttribute , IAsyncAuthorizationFilter
         _userFacade = context.HttpContext.RequestServices.GetRequiredService<IUserFacade>();
         _roleFacade = context.HttpContext.RequestServices.GetRequiredService<IRoleFacade>();
 
+        if (CheckAllowAnonymous(context))
+        {
+            return;
+        }
+
         if (context.HttpContext.User.Identity.IsAuthenticated)
         {
             if (await UserHasPermission(context) == false)
@@ -51,4 +56,27 @@ public class PermissionChecker : AuthorizeAttribute , IAsyncAuthorizationFilter
 
         return userRoles.Any(c => c.RolePermissions.Contains(_permission));
     }
+
+    public bool CheckAllowAnonymous(AuthorizationFilterContext context)
+    {
+        var metaData = context.ActionDescriptor.EndpointMetadata.OfType<dynamic>().ToList();
+        bool hasAllowAnonymous = false;
+        foreach (var item in metaData)
+        {
+            try
+            {
+                hasAllowAnonymous = item.TypeId.Name == "AllowAnonymousAttribute";
+                if (hasAllowAnonymous)
+                {
+                    break;
+                }
+            }
+            catch 
+            {
+               // Ignored
+            }
+            
+        }
+        return hasAllowAnonymous;
+    } 
 }
