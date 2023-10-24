@@ -13,5 +13,6 @@ public enum Permission
     User_Management,
     Product_Menagement,
     Category_Management,
-    Seller_Permission
+    Seller_Permission,
+    Seller_Panel
 }

@@ -28,7 +28,7 @@ namespace BoundlessBook.Bootstrapper.Controllers
 
         [PermissionChecker(Permission.Order_Managment)]
         [HttpGet]
-        public async Task<OrderFilterResult> GetOrders(OrderFilterParam orderFilterParam)
+        public async Task<OrderFilterResult> GetOrders([FromQuery]OrderFilterParam orderFilterParam)
         {
             return await _orderFacade.GetByFilter(orderFilterParam);
         }

@@ -4,6 +4,7 @@ using BoundlessBook.Application.Sellers.Edit;
 using BoundlessBook.Application.Sellers.EditInventory;
 using BoundlessBook.Bootstrapper.Infrastructure.Security;
 using BoundlessBook.Common.Common.Application;
+using BoundlessBook.Common.Common.AspNetCore;
 using BoundlessBook.Domain.RoleAggregate.Enums;
 using BoundlessBook.Presentation.Facade.Sellers;
 using BoundlessBook.Query.Seller.DTOs;
@@ -35,6 +36,12 @@ namespace BoundlessBook.Bootstrapper.Controllers
         {
             return await _sellerFacade.GetSellerById(id);
         }
+        [Authorize]
+        [HttpGet("Current")]
+        public async Task<SellerDto> GetSellerByUserId()
+        {
+            return await _sellerFacade.GetSellerByUserId(User.GetUserId());
+        }
 
         [PermissionChecker(Permission.Seller_Permission)]
         [HttpPost]
@@ -63,6 +70,38 @@ namespace BoundlessBook.Bootstrapper.Controllers
         public async Task<OperationResult> EditInventory(EditSellerInventoryCommand command)
         {
             return await _sellerFacade.EditInventory(command);
+        }
+
+        [PermissionChecker(Permission.Seller_Panel)]
+        [HttpGet("Inventory")]
+        public async Task<OperationResult<List<InventoryDto>>> GetInventories()
+        {
+            var seller = await _sellerFacade.GetSellerByUserId(User.GetUserId());
+
+            if (seller == null)
+            {
+                return OperationResult<List<InventoryDto>>.NotFound();
+            }
+            var result = await _sellerFacade.GetInventoryList(seller.Id);
+            return OperationResult<List<InventoryDto>>.Success(result);
+        }
+
+        [PermissionChecker(Permission.Seller_Panel)]
+        [HttpGet("Inventory/{inventoryId}")]
+        public async Task<OperationResult<InventoryDto>> GetInventories(Guid inventoryId)
+        {
+            var seller = await _sellerFacade.GetSellerByUserId(User.GetUserId());
+
+            if (seller == null)
+            {
+                return OperationResult<InventoryDto>.NotFound();
+            }
+            var result = await _sellerFacade.GetInventoryById(inventoryId);
+            if (result == null || result.SellerId != seller.Id)
+            {
+                return OperationResult<InventoryDto>.NotFound();
+            }
+            return OperationResult<InventoryDto>.Success(result);
         }
     }
 }
