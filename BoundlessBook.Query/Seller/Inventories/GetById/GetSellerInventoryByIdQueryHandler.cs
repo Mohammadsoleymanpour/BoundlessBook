@@ -18,7 +18,7 @@ public class GetSellerInventoryByIdQueryHandler : IQueryHandler<GetSellerInvento
         using (var connection = _dapperContext.CreateConnection())
         {
             var sql =
-                @$"SELECT i.Id, SellerId, ProductId , Count ,Price , i.CreationDate , DiscountPercentage , s.ShopName,
+                @$"SELECT i.Id, SellerId, ProductId , Count ,Price , i.CreationDate , DiscountPercent as DiscountPercentage , s.ShopName,
 p.Title as ProductTitle , p.ImageName as ProductImage
 From {_dapperContext.Inventories} i inner join {_dapperContext.Sellers} s on i.SellerId = s.Id
 inner join {_dapperContext.Products} p on i.ProductId = p.Id WHERE i.Id = @id";
