@@ -7,6 +7,7 @@ using BoundlessBook.Query.Products.DTOs;
 using BoundlessBook.Query.Products.GetByFilter;
 using BoundlessBook.Query.Products.GetById;
 using BoundlessBook.Query.Products.GetBySlug;
+using BoundlessBook.Query.Products.GetProductForShop;
 using MediatR;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -53,5 +54,10 @@ public class ProductFacade : IProductFacade
     public async Task<ProductDto> GetBySlug(string slug)
     {
         return await _mediator.Send(new GetProductBySlugQuery(slug));
+    }
+
+    public async Task<ProductShopResult> GetProductForShop(ProductResultFilterParam filterParams)
+    {
+        return await _mediator.Send(new GetProductForShopQuery(filterParams));
     }
 }

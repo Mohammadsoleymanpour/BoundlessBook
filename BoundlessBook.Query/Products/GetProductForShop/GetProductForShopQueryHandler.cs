@@ -83,23 +83,23 @@ or A.SecondarySubCategoryId= {category.Id}  )";
         {
             var skip = (param.PageId - 1) * param.Take;
             var sql = $@"SELECT Count(A.Title)
-FROM(Select p.Title , i.Price , i.Id as InventoryId , i.DiscountPercent , i.Count ,p.CategoryId , p.SubCategoryId , p.SecondarySubCategory ,
-p.Id as Id , s.Status , ROW_NUMBER() OVER(PARTITION BY p.Id ORDER BY {inventoryOrderBy} ) AS RN 
+FROM(Select p.Title , i.Price , i.Id as InventoryId , i.DiscountPercent , i.Count ,p.CategoryId , p.SubCategoryId , p.SecondarySubCategoryId ,
+p.Id as Id , s.SellerStatus , ROW_NUMBER() OVER(PARTITION BY p.Id ORDER BY {inventoryOrderBy} ) AS RN 
 FROM {_dapperContext.Products} p
 left join {_dapperContext.Inventories} i on p.Id=i.ProductId
 left join {_dapperContext.Sellers} s on i.SellerId=s.Id)A
-WHERE A.RN = 1 and A.Status=@status {conditions} ";
+WHERE A.RN = 1 and A.SellerStatus=@status {conditions} ";
 
 
             var resultSql =
-                $@"SELECT A.Slug , A.Id , A.Title , A.Price , A.InventoryId , A.DiscountPercent , A.ImageName 
-FROM (SELECT p.Title , i.Price , i.Id As InventoryId , i.DiscountPercent , p.ImageName , i.Count , 
-p.CategoryId , p.SubCategoryId , p.SecondarySubCategoryId , p.Slug , p.Id as Id , s.Status ,
+                $@"SELECT A.Slug , A.Id , A.Title , A.Price , A.InventoryId , A.DiscountPercent , A.ImageName , A.CreationDate
+FROM (SELECT p.Title , i.Price , i.Id As InventoryId , i.DiscountPercent , p.ImageName , i.Count , p.CreationDate,
+p.CategoryId , p.SubCategoryId , p.SecondarySubCategoryId , p.Slug , p.Id as Id , s.SellerStatus ,
 ROW_NUMBER() OVER(PARTITION BY p.Id ORDER BY {inventoryOrderBy} ) AS RN
 FROM {_dapperContext.Products} p
 left join {_dapperContext.Inventories} i on p.Id=i.ProductId
 left join {_dapperContext.Sellers} s on i.SellerId=s.Id)A
-WHERE A.RN =1 AND A.Status=@status {conditions} order by {orderBy} offset @skip ROWS FETCH NEXT @take ROWS ONLY ";
+WHERE A.RN =1 AND A.SellerStatus=@status {conditions} order by {orderBy} offset @skip ROWS FETCH NEXT @take ROWS ONLY ";
 
             var count = await connection.QueryFirstAsync<int>(sql, new { status = SellerStatus.Accept });
             var result = await connection.QueryAsync<ProductResultDto>(resultSql, new
