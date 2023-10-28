@@ -32,6 +32,13 @@ namespace BoundlessBook.Bootstrapper.Controllers
             return await _productFacade.GetByFilter(filterParams);
         }
 
+        [AllowAnonymous]
+        [HttpGet("Shop")]
+        public async Task<ProductShopResult> GetProductForShop([FromQuery] ProductResultFilterParam filterParam)
+        {
+            return await _productFacade.GetProductForShop(filterParam);
+        }
+
         [HttpGet("{id}")]
         public async Task<ProductDto> GetProductById(Guid id)
         {
