@@ -52,7 +52,15 @@ FacadeDI.Init(builder.Services);
 DependencyInjection.RegisterDpendency(builder.Services);
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddJwtAuthentication(builder.Configuration);
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("*")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -62,6 +70,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
